@@ -7,8 +7,8 @@ import {BsTelephoneInbound} from 'react-icons/bs'
 const Contact = () => {
   return (
     <>
-<div className="container my-24 mx-auto md:px-6">
-  <section className="mb-32">
+<div className="container mt-32 mb-0 mx-auto md:px-6">
+  <section>
     <div className="flex justify-center">
       <div className="text-center md:max-w-xl lg:max-w-3xl">
         <h2 className="mb-12 px-6 text-3xl font-bold">Contact us</h2>

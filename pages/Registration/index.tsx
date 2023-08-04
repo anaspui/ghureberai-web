@@ -17,8 +17,8 @@ const Registration = () => {
 			<div className="bg-gray-100 flex rounded-2xl max-w-5xl p-5 items-center">
 				<div className="md:w-1/2 px-8 md:px-16">
 				<div className='flex mb-8'>
-					<MdOutlineHotelClass className="text-3xl"/>
-					<h2 className="font-bold text-2xl ml-3"><Link href="../">Ghureberai</Link></h2>
+					<MdOutlineHotelClass className="text-3xl text-[#EB5148]"/>
+					<h2 className="font-bold text-2xl ml-3"><Link href="../" legacyBehavior><a>Ghureberai</a></Link></h2>
 				</div>
 				<h2 className="font-bold text-2xl">Sign up</h2>
 				<div className="mt-3 text-xs mb-8">
