@@ -25,7 +25,7 @@ const Navbar = () => {
 		<div class="order-2 md:order-3">
 			<button class="px-4 py-2 bg-[#EB5148] hover:bg-white hover:text-[#EB5148] border-2 hover:border-black rounded-xl flex items-center gap-2">
                 <IoIosLogIn />
-                <span><Link href="./Login" legacyBehavior><a>Login</a></Link></span>
+                <span><Link href="../Login" legacyBehavior><a>Login</a></Link></span>
             </button>
 		</div>
 	</div>
