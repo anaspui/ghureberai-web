@@ -17,7 +17,7 @@ const Registration = () => {
   return (
     <>
       <Navbar />
-      <section className='flex min-h-screen items-center justify-center bg-gray-50 mt-[-4rem]'>
+      <section className='mt-[-4rem] flex min-h-screen items-center justify-center bg-gray-50'>
         <div className='flex max-w-5xl items-center rounded-2xl bg-gray-100 p-5'>
           <div className='px-8 md:w-1/2 md:px-16'>
             <div className='mb-8 flex'>

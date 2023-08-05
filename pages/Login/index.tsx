@@ -11,8 +11,8 @@ const Login = () => {
   return (
     <>
       <Navbar />
-      <section className='flex min-h-screen items-center justify-center bg-gray-50 mt-[-4rem]'>
-        <div className='flex max-w-5xl items-center rounded-2xl bg-gray-100 p-5'>
+      <section className='mt-[-4rem] flex min-h-screen items-center justify-center bg-gray-50'>
+        <div className='flex max-w-5xl items-center rounded-2xl bg-gray-100 p-5 shadow-xl'>
           <div className='px-8 md:w-1/2 md:px-16'>
             <div className='mb-8 flex'>
               <MdOutlineHotelClass className='text-3xl text-[#EB5148]' />
@@ -33,18 +33,18 @@ const Login = () => {
 
             <form action='' className='flex flex-col gap-4'>
               <div className='flex w-full border-b border-[#002D74] p-2'>
-                <AiOutlineMail className='mr-3 mt-1 text-xl' />
+                <AiOutlineMail className='mb-1 mr-3 text-2xl text-[#EB5148]' />
                 <input
                   type='email'
-                  className='w-full focus:outline-none'
+                  className='w-full px-3 focus:outline-none'
                   name='email'
                   placeholder='Email'
                 />
               </div>
               <div className='flex w-full border-b border-[#002D74] p-2'>
-                <RiLockPasswordLine className='mr-3 text-xl' />
+                <RiLockPasswordLine className='mb-1 mr-3 text-2xl text-[#EB5148]' />
                 <input
-                  className='w-full focus:outline-none'
+                  className='w-full px-3 focus:outline-none'
                   type='password'
                   name='password'
                   placeholder='Password'
