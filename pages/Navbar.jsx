@@ -17,8 +17,8 @@ const Navbar = () => {
 		<div class="text-gray-500 order-3 w-full md:w-auto md:order-2">
 			<ul class="flex font-semibold justify-between">
 				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/" legacyBehavior><a>Home</a></Link></li>
-				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/package"  legacyBehavior><a>Package</a></Link></li>
-				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/about" legacyBehavior ><a>About</a></Link></li>
+				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/Package"  legacyBehavior><a>Package</a></Link></li>
+				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/About" legacyBehavior ><a>About</a></Link></li>
 				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/contact"  legacyBehavior><a>Contact</a></Link></li>
 			</ul>
 		</div>
