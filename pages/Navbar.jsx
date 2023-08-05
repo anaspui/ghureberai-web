@@ -19,7 +19,7 @@ const Navbar = () => {
 				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/" legacyBehavior><a>Home</a></Link></li>
 				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/Package"  legacyBehavior><a>Package</a></Link></li>
 				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/About" legacyBehavior ><a>About</a></Link></li>
-				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/contact"  legacyBehavior><a>Contact</a></Link></li>
+				<li class="md:px-4 md:py-2 hover:text-[#EB5148]"><Link href="/ContactUs"  legacyBehavior><a>Contact</a></Link></li>
 			</ul>
 		</div>
 		<div class="order-2 md:order-3">
