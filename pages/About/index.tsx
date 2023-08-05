@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer/index';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -16,7 +17,7 @@ const About = () => {
               </h2>
 
               <div className='mt-4'>
-                <a
+                <Link
                   href='#'
                   title=''
                   className='text-primary-600 dark:text-primary-500 inline-flex items-center text-lg font-medium hover:underline'
@@ -35,7 +36,7 @@ const About = () => {
                       clip-rule='evenodd'
                     />
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -46,9 +47,9 @@ const About = () => {
                     2019
                   </p>
                   <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    <a href='#' className='hover:underline'>
+                    <Link href='#' className='hover:underline'>
                       We started our journey
-                    </a>
+                    </Link>
                   </h3>
                 </div>
 
@@ -57,9 +58,9 @@ const About = () => {
                     2020
                   </p>
                   <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    <a href='#' className='hover:underline'>
+                    <Link href='#' className='hover:underline'>
                       Partnership with Swiss Bank and BMW
-                    </a>
+                    </Link>
                   </h3>
                 </div>
 
@@ -68,9 +69,9 @@ const About = () => {
                     2020
                   </p>
                   <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    <a href='#' className='hover:underline'>
+                    <Link href='#' className='hover:underline'>
                       Join hands with AIUB and G4S
-                    </a>
+                    </Link>
                   </h3>
                 </div>
 
@@ -79,9 +80,9 @@ const About = () => {
                     2021
                   </p>
                   <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    <a href='#' className='hover:underline'>
+                    <Link href='#' className='hover:underline'>
                       Stated full functional office
-                    </a>
+                    </Link>
                   </h3>
                 </div>
 
@@ -90,9 +91,9 @@ const About = () => {
                     2022
                   </p>
                   <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    <a href='#' className='hover:underline'>
+                    <Link href='#' className='hover:underline'>
                       Fox News and Trixy become gold partner
-                    </a>
+                    </Link>
                   </h3>
                 </div>
 
@@ -101,9 +102,9 @@ const About = () => {
                     2023
                   </p>
                   <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    <a href='#' className='hover:underline'>
+                    <Link href='#' className='hover:underline'>
                       Connected with The Daily Star and Swift
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
@@ -158,7 +159,7 @@ const About = () => {
                   alt='Bonnie Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>Swiss Bank</a>
+                  <Link href='#'>Swiss Bank</Link>
                 </h3>
                 <p>Banking Partner</p>
               </div>
@@ -169,7 +170,7 @@ const About = () => {
                   alt='Helene Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>BMW</a>
+                  <Link href='#'>BMW</Link>
                 </h3>
                 <p>Travelling Partner</p>
               </div>
@@ -180,7 +181,7 @@ const About = () => {
                   alt='Jese Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>Swift</a>
+                  <Link href='#'>Swift</Link>
                 </h3>
                 <p>Travelling Partner</p>
               </div>
@@ -191,7 +192,7 @@ const About = () => {
                   alt='Joseph Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>Fox News</a>
+                  <Link href='#'>Fox News</Link>
                 </h3>
                 <p>Media Partner</p>
               </div>
@@ -202,7 +203,7 @@ const About = () => {
                   alt='Sofia Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>The Daily Star</a>
+                  <Link href='#'>The Daily Star</Link>
                 </h3>
                 <p>News Portal</p>
               </div>
@@ -213,7 +214,7 @@ const About = () => {
                   alt='Leslie Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>G4S</a>
+                  <Link href='#'>G4S</Link>
                 </h3>
                 <p>Security</p>
               </div>
@@ -224,7 +225,7 @@ const About = () => {
                   alt='Michael Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>AIUB</a>
+                  <Link href='#'>AIUB</Link>
                 </h3>
                 <p>Academic Partner</p>
               </div>
@@ -235,7 +236,7 @@ const About = () => {
                   alt='Neil Avatar'
                 />
                 <h3 className='mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                  <a href='#'>Burning Trixy</a>
+                  <Link href='#'>Burning Trixy</Link>
                 </h3>
                 <p>Development Partner</p>
               </div>
@@ -258,16 +259,16 @@ const About = () => {
             </div>
             <div className='mb-6 grid gap-8 md:grid-cols-2 lg:mb-16'>
               <div className='items-center rounded-lg bg-gray-50 shadow dark:border-gray-700 dark:bg-gray-800 sm:flex'>
-                <a href='#'>
+                <Link href='#'>
                   <img
                     className='w-full rounded-lg sm:rounded-none sm:rounded-l-lg'
                     src='https://avatars.githubusercontent.com/u/64026794?v=4'
                     alt='Mohammed Omar'
                   />
-                </a>
+                </Link>
                 <div className='p-5'>
                   <h3 className='text-xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                    <a href='#'>Mohammed Omar</a>
+                    <Link href='#'>Mohammed Omar</Link>
                   </h3>
                   <span className='text-gray-500 dark:text-gray-400'>CEO</span>
                   <p className='mb-4 mt-3 font-light text-gray-500 dark:text-gray-400'>
@@ -275,7 +276,7 @@ const About = () => {
                   </p>
                   <ul className='flex space-x-4 sm:mt-0'>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -291,10 +292,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -306,10 +307,10 @@ const About = () => {
                         >
                           <path d='M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84' />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -325,10 +326,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -344,7 +345,7 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -357,7 +358,7 @@ const About = () => {
                 />
                 <div className='p-5'>
                   <h3 className='text-xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                    <a href='#'>Mohammed Iftekhar</a>
+                    <Link href='#'>Mohammed Iftekhar</Link>
                   </h3>
                   <span className='text-gray-500 dark:text-gray-400'>
                     Managing Director
@@ -368,7 +369,7 @@ const About = () => {
                   </p>
                   <ul className='flex space-x-4 sm:mt-0'>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -384,10 +385,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -399,10 +400,10 @@ const About = () => {
                         >
                           <path d='M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84' />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -418,10 +419,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -437,22 +438,22 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className='items-center rounded-lg bg-gray-50 shadow dark:border-gray-700 dark:bg-gray-800 sm:flex'>
-                <a href='#'>
+                <Link href='#'>
                   <img
                     className='h-[19rem] w-[48rem] rounded-lg sm:rounded-none sm:rounded-l-lg'
                     src='https://avatars.githubusercontent.com/u/94302061?v=4'
                     alt='Michael Avatar'
                   />
-                </a>
+                </Link>
                 <div className='p-5'>
                   <h3 className='text-xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                    <a href='#'>MH Soikot</a>
+                    <Link href='#'>MH Soikot</Link>
                   </h3>
                   <span className='text-gray-500 dark:text-gray-400'>
                     Transport Manager
@@ -463,7 +464,7 @@ const About = () => {
                   </p>
                   <ul className='flex space-x-4 sm:mt-0'>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -479,10 +480,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -494,10 +495,10 @@ const About = () => {
                         >
                           <path d='M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84' />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -513,10 +514,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -532,22 +533,22 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className='items-center rounded-lg bg-gray-50 shadow dark:border-gray-700 dark:bg-gray-800 sm:flex'>
-                <a href='#'>
+                <Link href='#'>
                   <img
                     className='h-[19rem] w-[32rem] rounded-lg sm:rounded-none sm:rounded-l-lg'
                     src='https://avatars.githubusercontent.com/u/87262791?v=4'
                     alt='Sofia Avatar'
                   />
-                </a>
+                </Link>
                 <div className='p-5'>
                   <h3 className='text-xl font-bold tracking-tight text-gray-900 dark:text-white'>
-                    <a href='#'>Mostafa Masud Safi</a>
+                    <Link href='#'>Mostafa Masud Safi</Link>
                   </h3>
                   <span className='text-gray-500 dark:text-gray-400'>
                     Hotel Manager
@@ -558,9 +559,9 @@ const About = () => {
                   </p>
                   <ul className='flex space-x-4 sm:mt-0'>
                     <li>
-                      <a
+                      <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className=' text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
                         <svg
                           className='h-5 w-5'
@@ -574,10 +575,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -589,10 +590,10 @@ const About = () => {
                         >
                           <path d='M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84' />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -608,10 +609,10 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href='#'
                         className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
                       >
@@ -627,7 +628,7 @@ const About = () => {
                             clip-rule='evenodd'
                           />
                         </svg>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
