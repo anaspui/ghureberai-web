@@ -1,7 +1,7 @@
-import React from 'react'
-import {IoIosLogIn} from 'react-icons/io'
-import {MdOutlineHotelClass} from 'react-icons/md'
-import Link from 'next/link'
+import React from 'react';
+import { IoIosLogIn } from 'react-icons/io';
+import { MdOutlineHotelClass } from 'react-icons/md';
+import Link from 'next/link';
 
 const Navbar = () => {
   return (
@@ -27,11 +27,11 @@ const Navbar = () => {
                 <IoIosLogIn />
                 <span><Link href="../Login" legacyBehavior><a>Login</a></Link></span>
             </button>
-		</div>
-	</div>
-</nav>
+          </div>
+        </div>
+      </nav>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
