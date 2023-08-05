@@ -17,9 +17,9 @@ const Testimonial = () => {
           <figure className='mt-10'>
             <blockquote className='text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9'>
               <p>
-                “সুদানির ফুয়ার এই দেশত থাকা যাবে না। না হলে এই টাইপের ঘুরে বেড়ায়
-                বানাতে বানাতে আমার আর দেশ ঘুরা হবে না। আপনারা আমাদের সার্ভিস
-                কিনেন তাহলে আমি দেশ বিদেশে ঘুরতে পারব...!”
+                “এই দেশত থাকা যাবে না। না হলে এই টাইপের ঘুরে বেড়ায় বানাতে বানাতে
+                আমার আর দেশ ঘুরা হবে না। আপনারা আমাদের সার্ভিস কিনেন তাহলে আমি
+                দেশ বিদেশে ঘুরতে পারব...!”
               </p>
             </blockquote>
             <figcaption className='mt-10'>
