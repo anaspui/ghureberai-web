@@ -16,6 +16,8 @@
     "next": "13.4.12",
     "prettier": "^3.0.1",
     "prettier-plugin-tailwindcss": "^0.4.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1"
@@ -23,7 +25,6 @@
   "devDependencies": {
     "@types/node": "20.4.6",
     "@types/react": "18.2.18",
-    "@typescript-eslint/eslint-plugin": "^6.2.1",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.46.0",
     "postcss": "^8.4.27",
