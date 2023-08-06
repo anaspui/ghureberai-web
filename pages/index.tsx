@@ -1,4 +1,3 @@
-import Contact from './Contact';
 import Footer from './Footer';
 import Gallery from './Gallery';
 import Hero from './Hero';
