@@ -20,7 +20,7 @@ const About = () => {
                 <Link
                   href='#'
                   title=''
-                  className='text-primary-600 dark:text-primary-500 inline-flex items-center text-lg font-medium hover:underline'
+                  className='text-primary-600 dark:text-primary-500 inline-flex items-center text-lg font-medium text-[#EB5148] hover:underline'
                 >
                   Connect with us
                   <svg
@@ -118,7 +118,7 @@ const About = () => {
           <div className='mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-6 lg:py-16'>
             <figure className='mx-auto max-w-screen-md'>
               <svg
-                className='mx-auto mb-3 h-12 text-gray-400 dark:text-gray-600'
+                className='mx-auto mb-3 h-12 text-orange-400 dark:text-[#EB5148]'
                 viewBox='0 0 24 27'
                 fill='none'
                 xmlns='http://www.w3.org/2000/svg'
@@ -128,8 +128,8 @@ const About = () => {
                   fill='currentColor'
                 />
               </svg>
-              <blockquote>
-                <p className='text-2xl font-medium text-gray-900 dark:text-white'>
+              <blockquote className=''>
+                <p className='bg-gradient-to-r from-neutral-100 via-orange-700 to-neutral-200 bg-clip-text text-2xl font-medium text-transparent'>
                   "Ghureberai ensures the best and efficient travel plan for
                   making a memorable journey for both you and us"
                 </p>
@@ -278,7 +278,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -297,7 +297,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -312,7 +312,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -331,7 +331,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -371,7 +371,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -390,7 +390,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -405,7 +405,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -424,7 +424,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -466,7 +466,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -485,7 +485,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -500,7 +500,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -519,7 +519,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -561,7 +561,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className=' text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className=' text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -580,7 +580,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -595,7 +595,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
@@ -614,7 +614,7 @@ const About = () => {
                     <li>
                       <Link
                         href='#'
-                        className='text-gray-500 hover:text-gray-900 dark:hover:text-white'
+                        className='text-gray-500 hover:text-gray-900 dark:hover:text-[#EB5148]'
                       >
                         <svg
                           className='h-5 w-5'
