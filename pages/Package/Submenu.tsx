@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaArrowRightArrowLeft} from 'react-icons/Fa6'
+import {BsArrowUpRightSquare} from 'react-icons/bs'
 
 const Submenu = () => {
     
@@ -21,7 +21,7 @@ const Submenu = () => {
         data-te-sidenav-link-ref>
         <span
           className="mr-4 [&>svg]:h-3.5 [&>svg]:w-3.5 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
-          <FaArrowRightArrowLeft/>
+          <BsArrowUpRightSquare/>
         </span>
         <span>Filters</span>
       </a>

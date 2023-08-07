@@ -181,7 +181,6 @@ const Navbar = () => {
   </div>
   <div className="mx-auto lg:ml-80"></div>
 </div>
-<script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     </>
   )
 }
