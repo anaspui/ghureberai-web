@@ -6,6 +6,7 @@
   ],
   "plugins": ["@typescript-eslint", "no-null"],
   "rules": {
+    "@next/next/no-img-element": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "import/order": [
       "error",

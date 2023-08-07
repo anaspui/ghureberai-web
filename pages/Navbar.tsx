@@ -22,31 +22,31 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className='hover:text-[#EB5148] md:px-4 md:py-2'>
-                <Link href='/package' legacyBehavior>
+                <Link href='/Package' legacyBehavior>
                   <a>Package</a>
                 </Link>
               </li>
               <li className='hover:text-[#EB5148] md:px-4 md:py-2'>
-                <Link href='/about' legacyBehavior>
+                <Link href='/About' legacyBehavior>
                   <a>About</a>
                 </Link>
               </li>
               <li className='hover:text-[#EB5148] md:px-4 md:py-2'>
-                <Link href='/contact' legacyBehavior>
+                <Link href='/ContactUs' legacyBehavior>
                   <a>Contact</a>
                 </Link>
               </li>
             </ul>
           </div>
           <div className='order-2 md:order-3'>
-            <button className='flex items-center gap-2 rounded-xl border-2 bg-[#EB5148] px-4 py-2 hover:border-black hover:bg-white hover:text-[#EB5148]'>
-              <IoIosLogIn />
-              <span>
-                <Link href='../Login' legacyBehavior>
+            <Link href='../Login' legacyBehavior>
+              <button className='flex items-center gap-2 rounded-xl border-2 bg-[#EB5148] px-4 py-2 hover:border-black hover:bg-white hover:text-[#EB5148]'>
+                <IoIosLogIn />
+                <span>
                   <a>Login</a>
-                </Link>
-              </span>
-            </button>
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
       </nav>
