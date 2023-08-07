@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Link from 'next/link';
 import { AiFillTwitterCircle, AiOutlineMail } from 'react-icons/ai';
 import { BiLogoFacebookCircle } from 'react-icons/bi';
