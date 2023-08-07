@@ -1,10 +1,12 @@
 import React from 'react';
-import { AiOutlineMail, AiFillTwitterCircle } from 'react-icons/ai';
-import { RiLockPasswordLine } from 'react-icons/ri';
-import { FcGoogle } from 'react-icons/fc';
-import { BiLogoFacebookCircle } from 'react-icons/bi';
-import { MdOutlineHotelClass } from 'react-icons/md';
+
 import Link from 'next/link';
+import { AiFillTwitterCircle, AiOutlineMail } from 'react-icons/ai';
+import { BiLogoFacebookCircle } from 'react-icons/bi';
+import { FcGoogle } from 'react-icons/fc';
+import { MdOutlineHotelClass } from 'react-icons/md';
+import { RiLockPasswordLine } from 'react-icons/ri';
+
 import Navbar from '../Navbar';
 
 const Login = () => {
