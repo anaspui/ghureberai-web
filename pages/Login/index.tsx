@@ -1,12 +1,12 @@
 import React from 'react';
-import { AiOutlineMail, AiFillTwitterCircle } from 'react-icons/ai';
-import { RiLockPasswordLine } from 'react-icons/ri';
-import { FcGoogle } from 'react-icons/fc';
-import { BiLogoFacebookCircle } from 'react-icons/bi';
-import { MdOutlineHotelClass } from 'react-icons/md';
 import Link from 'next/link';
+import { AiFillTwitterCircle, AiOutlineMail } from 'react-icons/ai';
+import { BiLogoFacebookCircle } from 'react-icons/bi';
+import { FcGoogle } from 'react-icons/fc';
+import { MdOutlineHotelClass } from 'react-icons/md';
+import { RiLockPasswordLine } from 'react-icons/ri';
+
 import Navbar from '../Navbar';
-import Image from 'next/image';
 const Login = () => {
   return (
     <>
@@ -79,7 +79,7 @@ const Login = () => {
           </div>
 
           <div className='hidden w-1/2 md:block'>
-            <Image
+            <img
               className='rounded-2xl'
               src='https://images.unsplash.com/photo-1690369936917-0da2f88a8e40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0OXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
               alt='Image containing natural surrounding'

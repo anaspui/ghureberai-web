@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 const Hero = () => {
   return (
     <>
@@ -40,7 +39,7 @@ const Hero = () => {
               </a>
             </div>
             <div className='hidden lg:col-span-5 lg:mt-0 lg:flex'>
-              <Image
+              <img
                 src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/phone-mockup.png'
                 alt='mockup'
               />

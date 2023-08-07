@@ -7,7 +7,7 @@ const Navbar = () => {
         <nav className='bg-gray-800 px-6 py-6 lg:hidden'>
           <div className='flex items-center justify-between'>
             <a className='text-2xl font-semibold text-white' href='#'>
-              <Image
+              <img
                 className='h-10'
                 src='artemis-assets/logos/artemis-logo.svg'
                 alt=''
@@ -32,7 +32,7 @@ const Navbar = () => {
           <nav className='fixed bottom-0 left-0 top-0 flex w-3/4 flex-col overflow-y-auto bg-gray-800 pb-8 pt-6 sm:max-w-xs lg:w-80'>
             <div className='mb-6 flex w-full items-center border-gray-700 px-6 pb-6 lg:border-b'>
               <a className='text-xl font-semibold text-white' href='#'>
-                <Image
+                <img
                   className='h-8'
                   src='artemis-assets/logos/artemis-logo.svg'
                   alt=''
@@ -374,14 +374,6 @@ const Navbar = () => {
         </div>
         <div className='mx-auto lg:ml-80'></div>
       </div>
-<<<<<<< HEAD
-    </nav>
-  </div>
-  <div className="mx-auto lg:ml-80"></div>
-</div>
-=======
-      <script src='../path/to/flowbite/dist/flowbite.min.js'></script>
->>>>>>> 43780a3aead997e4299a98d980718e00624e1f9d
     </>
   );
 };

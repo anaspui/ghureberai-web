@@ -1,6 +1,5 @@
 import React from 'react';
 import { MdOutlineHotelClass } from 'react-icons/md';
-import Image from 'next/image';
 const Testimonial = () => {
   return (
     <>
@@ -23,7 +22,7 @@ const Testimonial = () => {
               </p>
             </blockquote>
             <figcaption className='mt-10'>
-              <Image
+              <img
                 className='mx-auto h-10 w-10 rounded-full'
                 src='https://avatars.githubusercontent.com/u/64026794?v=4'
                 alt=''

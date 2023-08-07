@@ -1,14 +1,13 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import Submenu from './Submenu';
-import Image from 'next/image';
 const Package = () => {
   return (
     <>
       <Navbar />
       <div className='flex min-h-screen w-full flex-wrap items-center justify-center gap-4 bg-gray-100'>
         <div className='w-60 transform rounded-xl bg-white p-2 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl'>
-          <Image
+          <img
             className='h-40 rounded-xl object-cover'
             src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80'
             alt=''

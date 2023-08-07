@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 const NotFount = () => {
   return (
     <>
@@ -47,7 +46,7 @@ const NotFount = () => {
           </div>
 
           <div className='relative mt-12 w-full lg:mt-0 lg:w-1/2'>
-            <Image
+            <img
               className='w-full max-w-lg lg:mx-auto'
               src='https://merakiui.com/images/components/illustration.svg'
               alt=''

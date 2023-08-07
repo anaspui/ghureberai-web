@@ -6,9 +6,12 @@
   ],
   "plugins": ["@typescript-eslint", "no-null"],
   "rules": {
+    // "import/order": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-img-element": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "import/order": [
-      "error",
+      "warn",
       {
         "groups": [
           "builtin",
@@ -26,6 +29,7 @@
             "position": "before"
           }
         ],
+        "react/no-unescaped-entities": ["error", { "forbid": [">", "]", "}"] }],
         "pathGroupsExcludedImportTypes": ["react", "next"],
         "newlines-between": "always",
         "alphabetize": {

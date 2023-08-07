@@ -1,21 +1,20 @@
 import React from 'react';
-import Image from 'next/image';
 const Newsletter = () => {
   return (
     <>
       <div className='mx-4 py-16 2xl:container 2xl:mx-auto'>
         <div className='relative flex w-full items-center justify-center'>
-          <Image
+          <img
             src='https://i.ibb.co/4sYZ8gC/Image-2.png'
             alt='dining'
             className='absolute z-0 hidden h-full w-full xl:block'
           />
-          <Image
+          <img
             src='https://i.ibb.co/bbS3J9C/pexels-max-vakhtbovych-6301182-1.png'
             alt='dining'
             className='absolute z-0 hidden h-full w-full sm:block xl:hidden'
           />
-          <Image
+          <img
             src='https://i.ibb.co/JKkzGDs/pexels-max-vakhtbovych-6301182-1.png'
             alt='dining'
             className='absolute z-0 h-full w-full sm:hidden'

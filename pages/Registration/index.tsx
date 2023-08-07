@@ -12,7 +12,6 @@ import { MdOutlineHotelClass } from 'react-icons/md';
 import { BsTelephone } from 'react-icons/bs';
 import Link from 'next/link';
 import Navbar from '../Navbar';
-import Image from 'next/image';
 const Registration = () => {
   return (
     <>
@@ -101,7 +100,7 @@ const Registration = () => {
           </div>
 
           <div className='hidden w-1/2 md:block'>
-            <Image
+            <img
               className='rounded-2xl'
               src='https://images.unsplash.com/photo-1690800108768-efdcb2953cd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMTN8fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60'
               alt='Image containing objects and furniture from hotel room'
