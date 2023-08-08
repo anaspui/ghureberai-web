@@ -1,18 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AiOutlineMail,
   AiOutlineUser,
   AiFillTwitterCircle,
 } from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
-
 import { FcGoogle } from 'react-icons/fc';
 import { BiLogoFacebookCircle } from 'react-icons/bi';
 import { MdOutlineHotelClass } from 'react-icons/md';
 import { BsTelephone } from 'react-icons/bs';
 import Link from 'next/link';
 import Navbar from '../Navbar';
+import { useRouter } from 'next/router';
+import axiosInstance from '../utils/axiosInstance';
+import Cookies from 'js-cookie';
 const Registration = () => {
+  const router = useRouter();
+  const [Username, setUsername] = useState('');
+  const [Password, setPassword] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Phone, setPhone] = useState('');
+  const [Error, setError] = useState('');
+
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const response = await axiosInstance.post('/registration', {
+        Username: Username,
+        Password: Password,
+        Email: Email,
+        Phone: Phone,
+      });
+      if (response.status === 201) {
+        const data = response.data;
+        Cookies.set('token', data.AccessToken);
+        router.push('/');
+        setError('Registration Succesfull');
+      }
+    } catch (error: any) {
+      setError(error.response.data.message);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -38,14 +68,16 @@ const Registration = () => {
               </p>
             </div>
 
-            <form action='' className='flex flex-col gap-4'>
+            <form onSubmit={handleLogin} className='flex flex-col gap-4'>
               <div className='flex w-full border-b border-[#002D74] p-2'>
                 <AiOutlineUser className='mr-3 mt-1 text-xl' />
                 <input
                   type='text'
                   className='w-full focus:outline-none'
-                  name='username'
-                  placeholder='username'
+                  name='Username'
+                  placeholder='Username'
+                  value={Username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className='flex w-full border-b border-[#002D74] p-2'>
@@ -53,8 +85,10 @@ const Registration = () => {
                 <input
                   className='w-full focus:outline-none'
                   type='password'
-                  name='password'
+                  name='Password'
                   placeholder='Password'
+                  value={Password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className='flex w-full border-b border-[#002D74] p-2'>
@@ -62,8 +96,10 @@ const Registration = () => {
                 <input
                   type='email'
                   className='w-full focus:outline-none'
-                  name='email'
+                  name='Email'
                   placeholder='Email'
+                  value={Email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className='flex w-full border-b border-[#002D74] p-2'>
@@ -71,10 +107,15 @@ const Registration = () => {
                 <input
                   type='text'
                   className='w-full focus:outline-none'
-                  name='phone'
+                  name='Phone'
                   placeholder='+0187924378'
+                  value={Phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
+              <span className='ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                {Error}
+              </span>
               <button className='mt-6 rounded-xl bg-[#EB5148] py-2 text-white duration-300 hover:scale-105'>
                 Register
               </button>

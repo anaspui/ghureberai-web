@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { AiFillTwitterCircle, AiOutlineMail } from 'react-icons/ai';
 import { BiLogoFacebookCircle } from 'react-icons/bi';
 import { FcGoogle } from 'react-icons/fc';
 import { MdOutlineHotelClass } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
-
+import axiosInstance from '../utils/axiosInstance';
 import Navbar from '../Navbar';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
+
 const Login = () => {
+  const router = useRouter();
+  const [Username, setUsername] = useState('');
+  const [Password, setPassword] = useState('');
+  const [Error, setError] = useState('');
+  const token = Cookies.get('token');
+  // if (token) {
+  //   console.log('token:', token);
+  // }
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+
+    try {
+      const response = await axiosInstance.post('/auth/login', {
+        Username: Username,
+        Password: Password,
+      });
+      if (response.status === 200) {
+        const data = response.data;
+        Cookies.set('token', data.AccessToken);
+        router.push('/');
+        setError('');
+      }
+    } catch (error: any) {
+      setError(error.response.data.message);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -31,14 +61,16 @@ const Login = () => {
               </p>
             </div>
 
-            <form action='' className='flex flex-col gap-4'>
+            <form onSubmit={handleLogin} className='flex flex-col gap-4'>
               <div className='flex w-full border-b border-[#002D74] p-2'>
                 <AiOutlineMail className='mb-1 mr-3 text-2xl text-[#EB5148]' />
                 <input
-                  type='email'
+                  type='text'
                   className='w-full px-3 focus:outline-none'
-                  name='email'
-                  placeholder='Email'
+                  name='Username'
+                  placeholder='Username'
+                  value={Username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className='flex w-full border-b border-[#002D74] p-2'>
@@ -46,10 +78,15 @@ const Login = () => {
                 <input
                   className='w-full px-3 focus:outline-none'
                   type='password'
-                  name='password'
+                  name='Password'
                   placeholder='Password'
+                  value={Password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              <span className='ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                {Error}
+              </span>
               <button className='rounded-xl bg-[#EB5148] py-2 text-white duration-300 hover:scale-105'>
                 Login
               </button>
@@ -58,7 +95,7 @@ const Login = () => {
             <div className='py-4 text-xs text-[#002D74]'>
               <a href='#'>Forgot your password?</a>
             </div>
-
+            {/*  */}
             <div className='mt-6 grid grid-cols-3 items-center text-gray-400'>
               <hr className='border-gray-400' />
               <p className='text-center text-sm'>or continue with</p>
