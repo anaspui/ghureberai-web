@@ -14,7 +14,6 @@
     "@typescript-eslint/parser": "^6.2.1",
     "eslint-config-next": "13.4.12",
     "eslint-config-prettier": "^8.10.0",
-    "flowbite": "^1.8.1",
     "next": "13.4.12",
     "prettier": "^3.0.1",
     "prettier-plugin-tailwindcss": "^0.4.1",
