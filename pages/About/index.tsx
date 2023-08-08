@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer/index';
 import Link from 'next/link';
-
 const About = () => {
   return (
     <>

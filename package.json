@@ -12,9 +12,14 @@
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
+    "axios": "^1.4.0",
     "eslint-config-next": "13.4.12",
     "eslint-config-prettier": "^8.10.0",
+<<<<<<< HEAD
     "flowbite": "^1.8.1",
+    "js-cookie": "^3.0.5",
+=======
+>>>>>>> 69ea8853d1bf61de658db03bbb0c09f8803c6e46
     "next": "13.4.12",
     "prettier": "^3.0.1",
     "prettier-plugin-tailwindcss": "^0.4.1",
@@ -23,6 +28,7 @@
     "react-icons": "^4.10.1"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.3",
     "@types/node": "20.4.6",
     "@types/react": "18.2.18",
     "autoprefixer": "^10.4.14",

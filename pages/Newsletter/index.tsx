@@ -1,12 +1,11 @@
 import React from 'react';
-
 const Newsletter = () => {
   return (
     <>
       <div className='mx-4 py-16 2xl:container 2xl:mx-auto'>
         <div className='relative flex w-full items-center justify-center'>
           <img
-            src='https://i.ibb.co/4sYZ8gC/img-2.png'
+            src='https://i.ibb.co/4sYZ8gC/Image-2.png'
             alt='dining'
             className='absolute z-0 hidden h-full w-full xl:block'
           />

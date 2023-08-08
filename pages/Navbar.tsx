@@ -2,8 +2,10 @@ import React from 'react';
 import { IoIosLogIn } from 'react-icons/io';
 import { MdOutlineHotelClass } from 'react-icons/md';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 const Navbar = () => {
+  const token = Cookies.get('token');
   return (
     <>
       <nav className='w-100 md:px-auto px-8'>

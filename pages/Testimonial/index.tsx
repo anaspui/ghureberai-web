@@ -1,6 +1,5 @@
 import React from 'react';
 import { MdOutlineHotelClass } from 'react-icons/md';
-
 const Testimonial = () => {
   return (
     <>
