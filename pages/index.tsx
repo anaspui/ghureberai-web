@@ -8,7 +8,6 @@ import Testimonial from './Testimonial';
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <Partner />
       <Gallery />

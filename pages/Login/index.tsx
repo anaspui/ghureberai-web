@@ -30,17 +30,20 @@ const Login = () => {
       if (response.status === 200) {
         const data = response.data;
         Cookies.set('token', data.AccessToken);
-        router.push('/');
+        // document.cookie = `token=${data.AccessToken}; SameSite=None; Secure`;
+        localStorage.setItem('user', 'true');
+        // router.push('/');
+        window.location.href = '/';
         setError('');
       }
     } catch (error: any) {
+      console.log(error);
       setError(error.response.data.message);
     }
   };
 
   return (
     <>
-      <Navbar />
       <section className='mt-[-4rem] flex min-h-screen items-center justify-center bg-gray-50'>
         <div className='flex max-w-5xl items-center rounded-2xl bg-gray-100 p-5 shadow-xl'>
           <div className='px-8 md:w-1/2 md:px-16'>

@@ -4,7 +4,6 @@ import Submenu from './Submenu';
 const Package = () => {
   return (
     <>
-      <Navbar />
       <div className='flex min-h-screen w-full flex-wrap items-center justify-center gap-4 bg-gray-100'>
         <div className='w-60 transform rounded-xl bg-white p-2 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl'>
           <img

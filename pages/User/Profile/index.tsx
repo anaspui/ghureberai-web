@@ -1,13 +1,9 @@
-import React from 'react'
-import {MdOutlineHotelClass} from 'react-icons/md'
-import Navbar from '../Navbar'
+import React from 'react';
+import { MdOutlineHotelClass } from 'react-icons/md';
+import Navbar from '../Navbar';
 
 const SideNav = () => {
-  return (
-    <>
-       <Navbar />
-    </>
-  )
-}
+  return <></>;
+};
 
-export default SideNav
+export default SideNav;
