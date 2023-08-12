@@ -87,9 +87,11 @@ const Footer = () => {
                     </a>
                   </li>
                   <li className='mt-3'>
-                    <a className='cursor-pointer text-gray-500 hover:text-white'>
-                      FAQ
-                    </a>
+                    <Link href={'/FAQ'} legacyBehavior>
+                      <a className='cursor-pointer text-gray-500 hover:text-white'>
+                        FAQ
+                      </a>
+                    </Link>
                   </li>
                 </nav>
               </div>

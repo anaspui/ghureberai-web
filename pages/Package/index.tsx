@@ -1,10 +1,11 @@
 import React from 'react';
-import Navbar from '../Navbar';
-import Submenu from './Submenu';
+import SubNavbar from './SubNavbar';
+import VerticalNavbar from './VerticalNavbar';
 const Package = () => {
   return (
     <>
-      <div className='flex min-h-screen w-full flex-wrap items-center justify-center gap-4 bg-gray-100'>
+    <SubNavbar/>
+      {/*<div className='flex min-h-screen w-full flex-wrap items-center justify-center gap-4 bg-gray-100'>
         <div className='w-60 transform rounded-xl bg-white p-2 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl'>
           <img
             className='h-40 rounded-xl object-cover'
@@ -15,7 +16,7 @@ const Package = () => {
             <h2 className='mb-2 text-lg font-bold '>Heading</h2>
 
             <p className='text-sm text-gray-600'>
-              Simple Yet Beautiful Card Design with TaiwlindCss. Subscribe to
+              Simple Yet Beautiful Card Design with Tailwind Css. Subscribe to
               our Youtube channel for more ...
             </p>
           </div>
@@ -30,7 +31,8 @@ const Package = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div>*/}
+      <VerticalNavbar/>
     </>
   );
 };
