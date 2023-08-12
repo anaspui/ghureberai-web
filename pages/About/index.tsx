@@ -6,10 +6,10 @@ const About = () => {
   return (
     <>
       <section>
-        <section className='bg-white antialiased dark:bg-gray-900'>
+        <section className='bg-gray-900 antialiased'>
           <div className='mx-auto max-w-screen-xl px-4 py-8 sm:py-16 lg:px-6 lg:py-24'>
             <div className='mx-auto max-w-3xl text-center'>
-              <h2 className='text-4xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white'>
+              <h2 className='text-4xl font-extrabold leading-tight tracking-tight text-white'>
                 Ghureberai
               </h2>
 

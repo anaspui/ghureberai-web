@@ -6,7 +6,7 @@ const Gallery = () => {
     <>
       <div className='flex w-full items-center justify-center'>
         <div className='container'>
-          <div className='flex items-center justify-center rounded-lg bg-gradient-to-r from-gray-200 to-slate-50 pb-16'>
+          <div className='flex items-center justify-center rounded-lg'>
             <h1 className='mr-[-10rem] hidden -rotate-90 text-center text-4xl font-extrabold leading-none tracking-tight text-black sm:block md:block lg:text-6xl'>
               Gallery
             </h1>

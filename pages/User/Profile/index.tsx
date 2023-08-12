@@ -3,7 +3,9 @@ import { MdOutlineHotelClass } from 'react-icons/md';
 import Navbar from '../Navbar';
 
 const SideNav = () => {
-  return <></>;
+  return <>
+    <Navbar />
+  </>;
 };
 
 export default SideNav;

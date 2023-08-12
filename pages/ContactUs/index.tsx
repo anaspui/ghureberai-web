@@ -5,9 +5,9 @@ import Footer from '../Footer';
 const ContactUs = () => {
   return (
     <>
-      <div className=' bg-white px-6 py-24 sm:py-32 lg:px-8'>
+      <div className='bg-[url("https://unsplash.com/photos/6bXvYyAYVrE")] px-6 py-24 sm:py-32 lg:px-8'>
         <div
-          className='absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]'
+          className='absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]'
           aria-hidden='true'
         >
           <div className='relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]'></div>
@@ -163,6 +163,9 @@ const ContactUs = () => {
           </div>
         </form>
       </div>
+      <div className="inset-0 bg-gray-300">
+  </div>
+  
       <Footer />
     </>
   );
