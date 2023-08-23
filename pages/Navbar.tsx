@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import { IoIosLogIn } from 'react-icons/io';
 import { MdOutlineHotelClass } from 'react-icons/md';
 import Link from 'next/link';
-import Cookies from 'js-cookie';
 import { FiLogOut } from 'react-icons/fi';
-import axiosInstance from './utils/axiosInstance';
 export default function Navbar({
   token,
   user,
@@ -13,7 +10,7 @@ export default function Navbar({
 }: any) {
   return (
     <nav className='w-100 md:px-auto px-8'>
-      <div className='container mx-auto flex h-16 items-center justify-between md:h-16 md:flex-nowrap md:px-4'>
+      <div className='container mx-auto flex h-16 items-center justify-between md:h-16 md:px-4'>
         <div className='text-black md:order-1'>
           <div className='flex items-center'>
             <MdOutlineHotelClass className='text-3xl' />

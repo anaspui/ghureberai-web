@@ -3,8 +3,14 @@ import Navbar from './Navbar';
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 import axiosInstance from './utils/axiosInstance';
+import { useRouter } from 'next/router';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const isInsideAdminRoute = router.asPath.startsWith('/Admin');
+  const isInside404Route = router.asPath.startsWith('/404');
+  const isInsideUserRoute = router.asPath.startsWith('/User');
+
   const [token, setToken] = useState<any>('');
   const storedToken = Cookies.get('token');
   const [user, setUser] = useState(null);
@@ -26,7 +32,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           const response = axiosInstance({
             method: 'get',
             url: `/user/`,
-            headers: { cookie: storedToken },
             withCredentials: true,
           });
 
@@ -52,19 +57,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     setToken('');
     setUser(null);
   };
-
-  return (
-    <>
-      <Navbar
-        loading={loading}
-        token={token}
-        storedToken={storedToken}
-        user={user}
-        error={error}
-        handleLogout={handleLogout}
-        userLoggedIn={userLoggedIn}
-      />
-      {children}
-    </>
-  );
+  if (isInsideAdminRoute || isInside404Route || isInsideUserRoute) {
+    return children;
+  } else {
+    return (
+      <>
+        <Navbar
+          loading={loading}
+          token={token}
+          storedToken={storedToken}
+          user={user}
+          error={error}
+          handleLogout={handleLogout}
+          userLoggedIn={userLoggedIn}
+        />
+        {children}
+      </>
+    );
+  }
 }
