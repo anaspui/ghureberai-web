@@ -35,8 +35,8 @@ const Navbar = () => {
             ,
         },
         {
-            href: './Others',
-            name: 'Others',
+            href: './Offer',
+            name: 'Offers',
             icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
             </svg>,
@@ -134,16 +134,11 @@ const Navbar = () => {
                                                 <a href="javascript:void(0)" className="block w-full p-2 text-left rounded-md hover:bg-gray-50 active:bg-gray-100 duration-150">
                                                     Status
                                                 </a>
-                                                <div className="relative rounded-md hover:bg-gray-50 active:bg-gray-100 duration-150">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 absolute right-1 inset-y-0 my-auto pointer-events-none">
-                                                        <path fillRule="evenodd" d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" clipRule="evenodd" />
-                                                    </svg>
-                                                    <select className="w-full cursor-pointer appearance-none bg-transparent p-2 outline-none">
-                                                        <option disabled selected>Theme</option>
-                                                        <option>Dark</option>
-                                                        <option>Light</option>
-                                                    </select>
-                                                </div>
+                                                <Link href={'../User/EditProfile'} legacyBehavior>
+                                                <a className="block w-full p-2 text-left rounded-md hover:bg-gray-50 active:bg-gray-100 duration-150">
+                                                    Edit Profile
+                                                </a>
+                                                </Link>
                                                 <button className="block w-full p-2 text-left rounded-md hover:bg-gray-50 active:bg-gray-100 duration-150">
                                                     Logout
                                                 </button>
