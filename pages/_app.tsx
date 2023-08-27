@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       {isAdminRoute(router.pathname) ? (
-        <ProtectedRoute allowedRoles={['admin', 'employee']}>
+        <ProtectedRoute allowedRoles={['admin', 'employee', 'customer']}>
           <Component {...pageProps} />
         </ProtectedRoute>
       ) : (

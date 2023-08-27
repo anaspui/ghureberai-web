@@ -32,6 +32,8 @@ const Login = () => {
         Cookies.set('token', data.AccessToken);
         // document.cookie = `token=${data.AccessToken}; SameSite=None; Secure`;
         localStorage.setItem('user', 'true');
+        localStorage.setItem('username', Username);
+        sessionStorage.setItem('user', 'true');
         // router.push('/');
         window.location.href = '/';
         setError('');
