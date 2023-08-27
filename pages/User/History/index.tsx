@@ -103,6 +103,7 @@ export default () => {
     return (
       <>
       <Navbar />
+        <main>
         <div className="container mx-auto px-4 md:px-8 mt-4">
             <div className="max-w-lg">
                 <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">
@@ -165,6 +166,7 @@ export default () => {
                 </table>
             </div>
         </div>
+        </main>
         </>
     )
 }
