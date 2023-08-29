@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import Cookies from 'js-cookie';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import {
+  AiFillTwitterCircle,
   AiOutlineMail,
   AiOutlineUser,
-  AiFillTwitterCircle,
 } from 'react-icons/ai';
-import { RiLockPasswordLine } from 'react-icons/ri';
-import { FcGoogle } from 'react-icons/fc';
 import { BiLogoFacebookCircle } from 'react-icons/bi';
-import { MdOutlineHotelClass } from 'react-icons/md';
 import { BsTelephone } from 'react-icons/bs';
-import Link from 'next/link';
-import Navbar from '../Navbar';
-import { useRouter } from 'next/router';
+import { FcGoogle } from 'react-icons/fc';
+import { MdOutlineHotelClass } from 'react-icons/md';
+import { RiLockPasswordLine } from 'react-icons/ri';
 import axiosInstance from '../utils/axiosInstance';
-import Cookies from 'js-cookie';
 const Registration = () => {
   const router = useRouter();
   const [Username, setUsername] = useState('');
@@ -31,11 +30,17 @@ const Registration = () => {
         Password: Password,
         Email: Email,
         Phone: Phone,
+        FirstName: 'null',
+        LastName: 'null',
+        Dob: 'null',
+        Address: 'null',
+        Picture: 'null',
+        Gender: 'male'
       });
       if (response.status === 201) {
         const data = response.data;
         Cookies.set('token', data.AccessToken);
-        router.push('/');
+        router.push('/Login');
         setError('Registration Succesfull');
       }
     } catch (error: any) {

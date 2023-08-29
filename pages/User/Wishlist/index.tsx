@@ -1,6 +1,22 @@
-import Navbar from "../Navbar"
+import axiosInstance from "@/pages/utils/axiosInstance";
+import { useEffect, useState } from "react";
+import Navbar from "../Navbar";
 
 export default () => {
+
+    const [wishlist, setWishlist] = useState([]);
+    useEffect(() => {
+        async function GetHistoryData() {
+            try {
+              const response = await axiosInstance.get(`/admin/allBookings`);
+              setWishlist(response.data)
+            } catch (error) {
+              console.error('Error fetching user data:' , error);
+            }
+        }
+        GetHistoryData();
+      }, []);
+      console.log(wishlist)
 
     const tableItems = [
         {

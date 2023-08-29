@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 
 const Hero = () => {
   return (
@@ -16,7 +15,6 @@ const Hero = () => {
               </p>
               <Link href={'/Login'} legacyBehavior>
               <a
-                href='#'
                 className='bg-primary-700 hover:bg-[#EB5148] hover:ease-in duration-300 focus:ring-primary-300 dark:focus:ring-primary-900 mr-3 inline-flex items-center justify-center rounded-lg px-5 py-3 text-center text-base font-medium text-white focus:ring-4'
               >
                 Get started
@@ -36,15 +34,15 @@ const Hero = () => {
               </Link>
               <Link href={'/ContactUs'} legacyBehavior>
               <a
-                href='#'
                 className='inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 hover:text-[#EB5148] hover:ease-in duration-300'
               >
                 Speak with us
               </a>
               </Link>
             </div>
-            <div className='hidden lg:col-span-5 lg:mt-0 lg:flex bg-[url(https://unsplash.com/photos/gAhlMffG_5o)] bg-transparent'>
-              
+            <div className='hidden lg:col-span-5 lg:mt-0 lg:flex bg-transparent ml-32'>
+            <svg fill='#FFFFFF' className='mt-16' xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 24 24"><path d="M20.56 3.34a1 1 0 0 0-1-.08l-17 8a1 1 0 0 0-.57.92 1 1 0 0 0 .6.9L8 15.45v6.72L13.84 18l4.76 2.08a.93.93 0 0 0 .4.09 1 1 0 0 0 .52-.15 1 1 0 0 0 .48-.79l1-15a1 1 0 0 0-.44-.89zM18.1 17.68l-5.27-2.31L16 9.17l-7.65 4.25-2.93-1.29 13.47-6.34z"></path></svg>
+            <svg fill='#FFFFFF' xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 24 24"><path d="M20.56 3.34a1 1 0 0 0-1-.08l-17 8a1 1 0 0 0-.57.92 1 1 0 0 0 .6.9L8 15.45v6.72L13.84 18l4.76 2.08a.93.93 0 0 0 .4.09 1 1 0 0 0 .52-.15 1 1 0 0 0 .48-.79l1-15a1 1 0 0 0-.44-.89zM18.1 17.68l-5.27-2.31L16 9.17l-7.65 4.25-2.93-1.29 13.47-6.34z"></path></svg>
             </div>
           </div>
         </section>

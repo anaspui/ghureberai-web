@@ -1,11 +1,12 @@
-import React from 'react';
+import Link from "next/link";
+
 const Partner = () => {
   return (
     <>
       <section className='bg-white'>
         <div className='mx-auto max-w-screen-xl px-4 py-8 text-center lg:px-12 lg:py-16'>
+          <Link href={'/Package'} legacyBehavior>
           <a
-            href='#'
             className='mb-7 inline-flex items-center justify-between rounded-full bg-gray-100 px-1 py-1 pr-4 text-sm text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700'
             role='alert'
           >
@@ -13,7 +14,7 @@ const Partner = () => {
               New
             </span>{' '}
             <span className='text-sm font-medium'>
-              Flowbite is out! See what's new
+              Checkout new and exciting deals only for you
             </span>
             <svg
               className='ml-2 h-5 w-5'
@@ -28,16 +29,16 @@ const Partner = () => {
               ></path>
             </svg>
           </a>
+          </Link>
           <h1 className='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl '>
-            We invest in the world’s potential
+            We invest in your Dream
           </h1>
           <p className='mb-8 text-lg font-normal text-gray-500 sm:px-16 lg:text-xl xl:px-48'>
-            Here at Flowbite we focus on markets where technology, innovation,
-            and capital can unlock long-term value and drive economic growth.
+            Ghureberai always try to provide the best for our customers. Our main goal is to provide the best travel experience for our customers. We are here to help you to make your dream come true.
           </p>
           <div className='mb-8 flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0 lg:mb-16'>
+            <Link href={'/About'} legacyBehavior>
             <a
-              href='#'
               className='bg-primary-700 hover:bg-primary-800 focus:ring-primary-300 inline-flex items-center justify-center rounded-lg bg-[#EB5148] px-5 py-3 text-center text-base font-medium text-white focus:ring-4'
             >
               Learn more
@@ -54,8 +55,9 @@ const Partner = () => {
                 ></path>
               </svg>
             </a>
+            </Link>
+            <Link href={'https://www.youtube.com/watch?v=WvMAKKrqqoE&ab_channel=TrendMax'} legacyBehavior>
             <a
-              href='#'
               className='inline-flex items-center justify-center rounded-lg border border-gray-300 px-5 py-3 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 '
             >
               <svg
@@ -68,13 +70,14 @@ const Partner = () => {
               </svg>
               Watch video
             </a>
+            </Link>
           </div>
           <div className='mx-auto px-4 text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36'>
             <span className='font-semibold uppercase text-gray-400'>
               FEATURED IN
             </span>
             <div className='mt-8 flex flex-wrap items-center justify-center text-gray-500 sm:justify-between'>
-              <a href='#' className='mb-5 mr-5 hover:text-[#EB5148] lg:mb-0 '>
+              <a href='https://www.youtube.com/' className='mb-5 mr-5 hover:text-[#EB5148] lg:mb-0 '>
                 <svg
                   className='h-8'
                   viewBox='0 0 132 29'
@@ -119,7 +122,7 @@ const Partner = () => {
                   />
                 </svg>
               </a>
-              <a href='#' className='mb-5 mr-5 hover:text-[#EB5148] lg:mb-0 '>
+              <a href='https://www.producthunt.com/' className='mb-5 mr-5 hover:text-[#EB5148] lg:mb-0 '>
                 <svg
                   className='h-11'
                   viewBox='0 0 208 42'
@@ -140,7 +143,7 @@ const Partner = () => {
                   />
                 </svg>
               </a>
-              <a href='#' className='mb-5 mr-5 hover:text-[#EB5148] lg:mb-0 '>
+              <a href='https://www.reddit.com/?rdt=44637' className='mb-5 mr-5 hover:text-[#EB5148] lg:mb-0 '>
                 <svg
                   className='h-11'
                   viewBox='0 0 120 41'

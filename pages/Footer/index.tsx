@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import React from 'react';
-import { MdOutlineHotelClass } from 'react-icons/md';
 import { CgFacebook } from 'react-icons/cg';
 import { IoLogoTwitter } from 'react-icons/io5';
+import { MdOutlineHotelClass } from 'react-icons/md';
 
 const Footer = () => {
   return (
@@ -33,7 +32,7 @@ const Footer = () => {
                 </h2>
                 <nav className='mb-10 list-none'>
                   <li className='mt-3'>
-                    <a className='cursor-pointer text-gray-500 hover:text-white'>
+                    <a className='cursor-pointer text-gray-500 hover:text-white'  href={'/ContactUs'}>
                       Company
                     </a>
                   </li>
@@ -43,7 +42,7 @@ const Footer = () => {
                     </a>
                   </li>
                   <li className='mt-3'>
-                    <a className='cursor-pointer text-gray-500 hover:text-white'>
+                    <a className='cursor-pointer text-gray-500 hover:text-white'  href={'/Blogs'}>
                       Blog
                     </a>
                   </li>
@@ -55,7 +54,7 @@ const Footer = () => {
                 </h2>
                 <nav className='mb-10 list-none'>
                   <li className='mt-3'>
-                    <a className='cursor-pointer text-gray-500 hover:text-white'>
+                    <a className='cursor-pointer text-gray-500 hover:text-white' href={'/ContactUs'}>
                       Contact Support
                     </a>
                   </li>
@@ -106,11 +105,6 @@ const Footer = () => {
                       Send a Message
                       </a>
                     </Link>
-                  </li>
-                  <li className='mt-3'>
-                    <a className='cursor-pointer text-gray-500 hover:text-white'>
-                      Request a Quote
-                    </a>
                   </li>
                   <li className='mt-3'>
                     <a className='cursor-pointer text-gray-500 hover:text-white'>

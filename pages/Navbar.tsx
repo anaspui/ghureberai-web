@@ -1,7 +1,7 @@
-import { IoIosLogIn } from 'react-icons/io';
-import { MdOutlineHotelClass } from 'react-icons/md';
 import Link from 'next/link';
 import { FiLogOut } from 'react-icons/fi';
+import { IoIosLogIn } from 'react-icons/io';
+import { MdOutlineHotelClass } from 'react-icons/md';
 export default function Navbar({
   token,
   user,
@@ -33,7 +33,7 @@ export default function Navbar({
                   href=''
                   className='p-5 align-[3px] font-semibold text-gray-500 hover:align-[4px] hover:text-[#EB5148]'
                 >
-                  <> Welcome, {(user as any).Username}!</>
+                  <> <Link href={'/User'}>Welcome, {(user as any).Username}!</Link></>
                 </a>
                 <Link onClick={handleLogout} href='/' passHref>
                   <button className='hover:shadow-[0px 8px 9px -4px rgba(51, 45, 45, 0.2), 0px 4px 18px 0px rgba(51, 45, 45, 0.1)] focus:shadow-[0px 8px 9px -4px rgba(51, 45, 45, 0.2), 0px 4px 18px 0px rgba(51, 45, 45, 0.1)] dark:shadow-[0px 4px 9px -4px #030202] dark:focus:shadow-[0px 8px 9px -4px rgba(3, 2, 2, 0.3), 0px 4px 18px 0px rgba(3, 2, 2, 0.2)] dark:active:shadow-[0px 8px 9px -4px rgba(3, 2, 2, 0.3), 0px 4px 18px 0px rgba(3, 2, 2, 0.2)] inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring-0 active:bg-neutral-900 dark:bg-neutral-900 dark:hover:bg-neutral-900 dark:active:bg-neutral-900'>

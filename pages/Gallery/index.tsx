@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
-import statspic from '../../public/1.jpg';
 import Image from 'next/image';
+import G1 from '../../public/G1.jpg';
+import G2 from '../../public/G2.jpg';
+import G3 from '../../public/G3.jpg';
+import G4 from '../../public/G4.jpg';
+import G5 from '../../public/G5.jpg';
+import G6 from '../../public/G6.jpg';
 import BlurImage from '../utils/BlurImage';
 const Gallery = () => {
   return (
@@ -19,21 +23,21 @@ const Gallery = () => {
                     <BlurImage
                       alt='gallery'
                       className='block h-full w-full rounded-lg object-cover object-center'
-                      src={statspic}
+                      src={G1}
                     />
                   </div>
                   <div className='w-1/2 p-1 md:p-2'>
                     <BlurImage
                       alt='gallery'
                       className='block h-full w-full rounded-lg object-cover object-center'
-                      src={statspic}
+                      src={G2}
                     />
                   </div>
                   <div className='w-full p-1 md:p-2'>
                     <BlurImage
                       alt='gallery'
                       className='block h-full w-full rounded-lg object-cover object-center'
-                      src={statspic}
+                      src={G3}
                     />
                   </div>
                 </div>
@@ -42,21 +46,21 @@ const Gallery = () => {
                     <BlurImage
                       alt='gallery'
                       className='block h-full w-full rounded-lg object-cover object-center'
-                      src={statspic}
+                      src={G4}
                     />
                   </div>
                   <div className='w-1/2 p-1 md:p-2'>
                     <BlurImage
                       alt='gallery'
                       className='block h-full w-full rounded-lg object-cover object-center'
-                      src={statspic}
+                      src={G5}
                     />
                   </div>
                   <div className='w-1/2 p-1 md:p-2'>
                     <Image
                       alt='gallery'
                       className='block h-full w-full rounded-lg object-cover object-center'
-                      src={statspic}
+                      src={G6}
                     />
                   </div>
                 </div>

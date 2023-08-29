@@ -71,7 +71,7 @@ const Navbar = () => {
                                 navigation.map((item, idx) => (
                                     <li key={idx}>
                                         <a href={item.href} className="relative flex items-center justify-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150 group">
-                                            <div className="text-gray-500"></div>
+                                            <div className="text-gray-500">{item.icon}</div>
                                             <span className="absolute left-14 p-1 px-1.5 rounded-md whitespace-nowrap text-xs text-white bg-gray-800 hidden group-hover:inline-block group-focus:hidden duration-150">
                                                 {item.name}
                                             </span>
@@ -114,7 +114,7 @@ const Navbar = () => {
                                 <button ref={profileRef} className="w-12 h-12 flex items-center gap-x-4 cursor-pointer rounded-full ring-offset-2 ring-gray-800 focus:ring-2 duration-150"
                                     onClick={() => setIsProfileActive(!isProfileActive)}
                                 >
-                                    <img src="https://randomuser.me/api/portraits/women/79.jpg" className="w-12 h-12 rounded-full" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 p-1"><path d="M15 11h7v2h-7zm1 4h6v2h-6zm-2-8h8v2h-8zM4 19h10v-1c0-2.757-2.243-5-5-5H7c-2.757 0-5 2.243-5 5v1h2zm4-7c1.995 0 3.5-1.505 3.5-3.5S9.995 5 8 5 4.5 6.505 4.5 8.5 6.005 12 8 12z"></path></svg>
                                 </button>
                                 {
                                     isProfileActive ? (

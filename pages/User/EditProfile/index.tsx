@@ -1,8 +1,18 @@
-import React from 'react'
+import { GlobalContext } from '@/pages/utils/ContextProvider';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
 import Navbar from './../Navbar';
 import SocialMedia from './SocialMedia';
 
 const EditProfile = () => {
+
+    const store = useContext(GlobalContext);
+    const { user } = store;
+    const router = useRouter();
+    if(!user){
+        router.push('/Login')
+    }
+
   return (
     <>
     <Navbar />

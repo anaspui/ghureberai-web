@@ -1,9 +1,10 @@
 // import '@/styles/globals.css';
-import Navbar from './Navbar';
 import Cookies from 'js-cookie';
-import React, { useState, useEffect } from 'react';
-import axiosInstance from './utils/axiosInstance';
 import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import Navbar from './Navbar';
+import ContextProvider from './utils/ContextProvider';
+import axiosInstance from './utils/axiosInstance';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -61,7 +62,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     return children;
   } else {
     return (
-      <>
+      <ContextProvider>
+        <>
         <Navbar
           loading={loading}
           token={token}
@@ -73,6 +75,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         />
         {children}
       </>
+      </ContextProvider>
     );
   }
 }

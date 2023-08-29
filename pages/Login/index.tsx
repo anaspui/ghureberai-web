@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
 import { AiFillTwitterCircle, AiOutlineMail } from 'react-icons/ai';
 import { BiLogoFacebookCircle } from 'react-icons/bi';
 import { FcGoogle } from 'react-icons/fc';
 import { MdOutlineHotelClass } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
+import { GlobalContext } from '../utils/ContextProvider';
 import axiosInstance from '../utils/axiosInstance';
-import Navbar from '../Navbar';
-import Cookies from 'js-cookie';
-import { useRouter } from 'next/router';
 
 const Login = () => {
+
+  const store = useContext(GlobalContext);
+  const { setUser } = store;
+
   const router = useRouter();
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
@@ -37,6 +41,7 @@ const Login = () => {
         // router.push('/');
         window.location.href = '/';
         setError('');
+        setUser(Username)
       }
     } catch (error: any) {
       console.log(error);

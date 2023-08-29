@@ -1,7 +1,21 @@
-import { useState } from "react"
-import Navbar from "../Navbar"
+import axiosInstance from "@/pages/utils/axiosInstance";
+import { useEffect, useState } from "react";
+import Navbar from "../Navbar";
 
 export default () => {
+    const [history, setHistory] = useState([]);
+    useEffect(() => {
+        async function GetHistoryData() {
+            try {
+              const response = await axiosInstance.get(`/admin/allBookings`);
+              setHistory(response.data)
+            } catch (error) {
+              console.error('Error fetching user data:' , error);
+            }
+        }
+        GetHistoryData();
+      }, []);
+      console.log(history)
 
     const tableItems = [
         {
@@ -32,7 +46,7 @@ export default () => {
         },
         {
             label: "Hotels",
-            title: "Top countries",
+            title: "Countries",
             items: [
                 {
                     prop: "Mauritania",
@@ -55,33 +69,7 @@ export default () => {
                     impression: "Pending"
                 },
             ]
-        },
-        {
-            label: "Devices",
-            title: "Top devices",
-            items: [
-                {
-                    prop: "Android",
-                    date: "360",
-                    impression: "On Process"
-                },
-                {
-                    prop: "Linux",
-                    date: "190",
-                    impression: "Successful"
-                },
-                {
-                    prop: "Macbook",
-                    date: "129",
-                    impression: "Pending"
-                },
-                {
-                    prop: "Windows",
-                    date: "50",
-                    impression: "Canceled"
-                },
-            ]
-        },
+        }
     ]
 
     const [selectedItem, setSelectedItem] = useState(0)
@@ -127,7 +115,7 @@ export default () => {
             <div className="text-sm mt-4 overflow-x-auto">
                 <ul role="tablist" className="w-full border-b flex items-center gap-x-3 overflow-x-auto">
                     {
-                        tableItems.map((item, idx) => (
+                        history.map((item, idx) => (
                             <li key={idx} className={`py-2 border-b-2 ${selectedItem == idx ? "border-indigo-600 text-indigo-600" : "border-white text-gray-500"}`}>
                                 <button
                                     role="tab"
@@ -145,20 +133,18 @@ export default () => {
                 <table className="w-full table-auto text-left">
                     <thead className="text-gray-600 font-medium border-b">
                         <tr>
-                            <th className="w-9/12 py-4 pr-6">{tableItems[selectedItem].title}</th>
+                            <th className="w-9/12 py-4 pr-6">Name</th>
                             <th className="py-4 pr-6">Date</th>
-                            <th className="py-4 pr-6">Status</th>
+                            <th className="py-4 pr-6">Type</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-600 divide-y">
                         {
-                            tableItems[selectedItem].items.map((item, idx) => (
+                            history.map((item, idx) => (
                                 <tr key={idx}>
-                                    <td className="pr-6 py-4 whitespace-nowrap">{item.prop}</td>
-                                    <td className="pr-6 py-4 whitespace-nowrap text-indigo-600">{item.date}</td>
-                                    <td className="pr-6 py-4 whitespace-nowrap">
-                                        <span className={`py-2 px-3 rounded-full font-semibold text-xs ${labelColors[item?.impression]?.color || ""}`}>{item.impression}</span>
-                                    </td>
+                                    <td className="pr-6 py-4 whitespace-nowrap text-indigo-600">{item.Name}</td>
+                                    <td className="pr-6 py-4 whitespace-nowrap text-indigo-600">{item.CheckInDate}</td>
+                                    <td className="pr-6 py-4 whitespace-nowrap">{item.PackageType}</td>
                                 </tr>
                             ))
                         }
