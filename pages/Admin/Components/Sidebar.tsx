@@ -1,4 +1,8 @@
-import { MdSpaceDashboard } from 'react-icons/md';
+import {
+  MdHomeRepairService,
+  MdOutlineManageAccounts,
+  MdSpaceDashboard,
+} from 'react-icons/md';
 // import { FaUsers } from 'react-icons/fa';
 import { BiChevronDown } from 'react-icons/bi';
 import {
@@ -12,6 +16,8 @@ import {
 import { useMediaQuery } from 'usehooks-ts';
 import { GlobalContext } from '@/context/GlobalContext';
 import Link from 'next/link';
+import { RiPagesFill } from 'react-icons/ri';
+import { HiCog6Tooth } from 'react-icons/hi2';
 
 const Sidebar = ({ setActiveButton, currentPage }: any) => {
   const store = useContext(GlobalContext);
@@ -115,7 +121,7 @@ const NavItem = ({ nav }: any) => {
       </LOL> */}
       {nav.subnav ? (
         <div
-          onClick={() => nav.subnav && setIsClicked((prev) => !prev)}
+          onClick={() => nav.subnav && setIsClicked(true)}
           className='group grid w-full grid-cols-[40px_auto] rounded-lg p-2 text-base text-gray-900 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700'
         >
           <div>{nav.icon}</div>
@@ -169,8 +175,8 @@ const sideNavBar = [
     link: '/Admin/Home',
   },
   {
-    name: 'CRUD',
-    icon: <MdSpaceDashboard size={30} />,
+    name: 'User Management',
+    icon: <MdOutlineManageAccounts size={30} />,
     subnav: [
       {
         name: 'Employee',
@@ -180,11 +186,44 @@ const sideNavBar = [
         name: 'Hotel Manager',
         link: '/Admin/CRUD/HotelManager',
       },
+    ],
+  },
+  {
+    name: 'Service Management',
+    icon: <MdHomeRepairService size={30} />,
+    subnav: [
       {
         name: 'Packages',
         link: '/Admin/CRUD/Packages',
       },
     ],
+  },
+  {
+    name: 'Pages',
+    icon: <RiPagesFill size={30} />,
+    subnav: [
+      {
+        name: 'Package',
+        link: '/Package',
+      },
+      {
+        name: 'About',
+        link: '/About',
+      },
+      {
+        name: 'Blog',
+        link: '#',
+      },
+      {
+        name: 'Support',
+        link: '#',
+      },
+    ],
+  },
+  {
+    name: 'Settings',
+    icon: <HiCog6Tooth size={30} />,
+    link: '/Admin/Settings',
   },
 ];
 

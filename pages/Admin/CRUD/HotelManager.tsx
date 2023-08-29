@@ -6,6 +6,7 @@ import Modal from '../Components/Modal';
 import ConfirmationModal from '../Components/Modal/ConfirmationModal';
 import { FaTimes } from 'react-icons/fa';
 import CreateEmployeeModal from '../Components/Modal/CreateEmployeeModal';
+import { AiFillDelete } from 'react-icons/ai';
 const colNames = ['Username', 'Name', 'Position', 'Phone', 'Status', ''];
 const limit = 5;
 
@@ -84,63 +85,132 @@ function HotelManager() {
   return (
     <>
       <Layout>
-        <div className='mx-auto max-w-screen-xl bg-gray-800 px-4 pt-14 md:px-8'>
-          <div className='items-start justify-between md:flex'>
-            <div className='max-w-lg'>
-              <h3 className='text-xl font-bold text-white sm:text-2xl'>
-                Hotel Manager
-              </h3>
-              <p className='mt-2 text-white'>List of all Hotel Managers</p>
-            </div>
-            <div className='mt-3 md:mt-0'>
-              <button
-                onClick={() => setShowModal(true)}
-                className='inline-block rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-700 md:text-sm'
+        <div className='mt-2 px-8'>
+          <ol className='inline-flex items-center space-x-1 text-sm font-medium md:space-x-2'>
+            <li className='inline-flex items-center'>
+              <a
+                href='#'
+                className='hover:text-primary-600 inline-flex items-center text-gray-700 dark:text-gray-300 dark:hover:text-white'
               >
-                Add Manager
-              </button>
-            </div>
-          </div>
-          <div className='mt-12 overflow-x-auto rounded-lg border shadow-sm'>
-            <table className='w-full table-auto text-left text-sm'>
-              <TableHead colNames={colNames} />
-              <tbody className='divide-y text-white'>
-                {employees?.map((employee, idx) => (
-                  <EmployeeRow
-                    key={idx}
-                    employee={employee}
-                    showConfirmationModal={showConfirmationModal}
-                    setShowConfirmationModal={setShowConfirmationModal}
-                    selectedEmployee={selectedEmployee}
-                    setSelectedEmployee={setSelectedEmployee}
-                    setShowModal={setShowModal}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className='mx-auto max-w-screen-xl px-4 py-12 text-white md:px-8'>
-            <div className='flex items-center justify-between text-sm font-medium text-white'>
-              <button
-                onClick={() =>
-                  currentPage > 1 && setCurrentPage((prev) => prev - 1)
-                }
-                className='rounded-lg border bg-gray-900 px-4 py-2 text-white duration-150 hover:bg-gray-600'
-              >
-                Previous
-              </button>
-              <div>
-                Page {currentPage} of {Math.round(employeeData?.length / limit)}
+                <svg
+                  className='mr-2.5 h-5 w-5'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path d='M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z'></path>
+                </svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <div className='flex items-center'>
+                <svg
+                  className='h-6 w-6 text-gray-400'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    fill-rule='evenodd'
+                    d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
+                    clip-rule='evenodd'
+                  ></path>
+                </svg>
+                <a
+                  href='#'
+                  className='hover:text-primary-600 ml-1 text-gray-700 dark:text-gray-300 dark:hover:text-white md:ml-2'
+                >
+                  Management
+                </a>
               </div>
-              <button
-                onClick={() =>
-                  currentPage < Math.round(employeeData?.length / limit) &&
-                  setCurrentPage((prev) => prev + 1)
-                }
-                className='rounded-lg border bg-gray-900 px-4 py-2 text-white duration-150 hover:bg-gray-600'
-              >
-                Next
-              </button>
+            </li>
+            <li>
+              <div className='flex items-center'>
+                <svg
+                  className='h-6 w-6 text-gray-400'
+                  fill='currentColor'
+                  viewBox='0 0 20 20'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <path
+                    fill-rule='evenodd'
+                    d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
+                    clip-rule='evenodd'
+                  ></path>
+                </svg>
+                <span
+                  className='ml-1 text-gray-400 dark:text-gray-500 md:ml-2'
+                  aria-current='page'
+                >
+                  Hotel Manager
+                </span>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div className='mx-auto max-w-screen-xl bg-gray-900 px-4 pt-4 md:px-8'>
+          <div className=' rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800'>
+            <div className='items-start justify-between md:flex'>
+              <div className='max-w-lg'>
+                <h3 className='text-xl font-bold text-white sm:text-2xl'>
+                  Hotel Manager
+                </h3>
+                <p className='mt-2 text-white'>List of all Hotel Managers</p>
+              </div>
+              <div className='mt-3 md:mt-0'>
+                <button
+                  onClick={() => setShowModal(true)}
+                  className='inline-block rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-700 md:text-sm'
+                >
+                  Add Manager
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className=' mt-2 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800'>
+            <div className='mt-12 overflow-x-auto rounded-lg border shadow-sm'>
+              <table className='w-full table-auto text-left text-sm'>
+                <TableHead colNames={colNames} />
+                <tbody className='divide-y text-white'>
+                  {employees?.map((employee, idx) => (
+                    <EmployeeRow
+                      key={idx}
+                      employee={employee}
+                      showConfirmationModal={showConfirmationModal}
+                      setShowConfirmationModal={setShowConfirmationModal}
+                      selectedEmployee={selectedEmployee}
+                      setSelectedEmployee={setSelectedEmployee}
+                      setShowModal={setShowModal}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className='mx-auto max-w-screen-xl px-4 py-12 text-white md:px-8'>
+              <div className='flex items-center justify-between text-sm font-medium text-white'>
+                <button
+                  onClick={() =>
+                    currentPage > 1 && setCurrentPage((prev) => prev - 1)
+                  }
+                  className='rounded-lg border bg-gray-900 px-4 py-2 text-white duration-150 hover:bg-gray-600'
+                >
+                  Previous
+                </button>
+                <div>
+                  Page {currentPage} of{' '}
+                  {Math.round(employeeData?.length / limit)}
+                </div>
+                <button
+                  onClick={() =>
+                    currentPage < Math.round(employeeData?.length / limit) &&
+                    setCurrentPage((prev) => prev + 1)
+                  }
+                  className='rounded-lg border bg-gray-900 px-4 py-2 text-white duration-150 hover:bg-gray-600'
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -172,7 +242,7 @@ function HotelManager() {
         actionTitle='Delete'
         icon={
           <div className='mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100'>
-            <FaTimes className='text-red-600' />
+            <AiFillDelete size={25} className='text-red-700' />
           </div>
         }
         handleAction={handleDeleteEmployee}
@@ -224,7 +294,7 @@ const EmployeeRow = ({
           {(employee.FirstName || '') + ' ' + (employee.LastName || '')}
         </td>
         <td className='whitespace-nowrap px-6 py-4 capitalize'>
-          {employee.Role}
+          Hotel Manager
         </td>
         <td className='whitespace-nowrap px-6 py-4'>{employee.Phone}</td>
         <td className='whitespace-nowrap px-6 py-4 capitalize'>
@@ -236,7 +306,7 @@ const EmployeeRow = ({
               setSelectedEmployee(employee);
               setShowModal(true);
             }}
-            className='rounded-lg px-3 py-2 font-medium leading-none text-indigo-500 duration-150 hover:bg-gray-200 hover:text-green-500'
+            className='rounded-lg px-3 py-2 font-medium leading-none text-indigo-500 duration-150 hover:bg-gray-200 hover:text-blue-900'
           >
             Edit
           </button>
