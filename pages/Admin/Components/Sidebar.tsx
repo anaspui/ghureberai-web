@@ -177,6 +177,10 @@ const sideNavBar = [
         link: '/Admin/CRUD/Employee',
       },
       {
+        name: 'Hotel Manager',
+        link: '/Admin/CRUD/HotelManager',
+      },
+      {
         name: 'Packages',
         link: '/Admin/CRUD/Packages',
       },

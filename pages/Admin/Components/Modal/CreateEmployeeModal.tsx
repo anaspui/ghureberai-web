@@ -97,65 +97,123 @@ function CreateEmployeeModal({
     };
 
     try {
-      console.log('data', data);
-
       if (employee) {
-        // console.log('PUT REQUEST DETECTED', employee);
-        console.log('PUT REQUEST DETECTED', employee.UserId);
-        const response = await axiosInstance.put(
-          '/admin/updateEmployee/' + employee.UserId,
-          data,
-          {
-            withCredentials: true,
-          }
-        );
-        console.log(response.data);
-        if (response.status === 200) {
-          setEmployeeData((prev: any) =>
-            prev.map((employee: any) => {
-              if (employee.UserId === response.data.UserId) {
-                return { ...employee, ...response.data };
-              }
-              return employee;
-            })
+        if (employee.Role == 'employee') {
+          const response = await axiosInstance.put(
+            '/admin/updateEmployee/' + employee.UserId,
+            data,
+            {
+              withCredentials: true,
+            }
           );
-          hide();
-          setFormData({
-            Username: '',
-            Email: '',
-            Password: '',
-            Validity: '',
-            Phone: '',
-          });
-        } else {
-          console.log('UPDATE: Employee Not Added');
+          console.log(response.data);
+          if (response.status === 200) {
+            setEmployeeData((prev: any) =>
+              prev.map((employee: any) => {
+                if (employee.UserId === response.data.UserId) {
+                  return { ...employee, ...response.data };
+                }
+                return employee;
+              })
+            );
+            hide();
+            setFormData({
+              Username: '',
+              Email: '',
+              Password: '',
+              Validity: '',
+              Phone: '',
+            });
+          } else {
+            console.log('UPDATE: Employee Not Added');
+          }
+        }
+        if (employee.Role == 'hotelManager') {
+          const response = await axiosInstance.put(
+            '/admin/updateHotelManager/' + employee.UserId,
+            data,
+            {
+              withCredentials: true,
+            }
+          );
+          console.log(response);
+          if (response.status === 200) {
+            setEmployeeData((prev: any) =>
+              prev.map((employee: any) => {
+                if (employee.UserId === response.data.UserId) {
+                  return { ...employee, ...response.data };
+                }
+                return employee;
+              })
+            );
+            hide();
+            setFormData({
+              Username: '',
+              Email: '',
+              Password: '',
+              Validity: '',
+              Phone: '',
+            });
+          } else {
+            console.log('UPDATE REQ: HMANAGER Not Added');
+          }
         }
       }
       if (!employee) {
         // console.log('New Form Data, POST DETECTED');
-        const response = await axiosInstance.post('/admin/addEmployee', data, {
-          withCredentials: true,
-        });
-        console.log(response);
+        if (data.Email.includes('@hotel.ghureberai.com')) {
+          const response = await axiosInstance.post(
+            '/admin/addHotelManager',
+            data,
+            {
+              withCredentials: true,
+            }
+          );
+          console.log(response);
 
-        if (response.status === 201) {
-          console.log('Employee Added Successfully', response.data);
-          setEmployeeData((prev: any) => [response.data, ...prev]);
-          hide();
-          setFormData({
-            Username: '',
-            Email: '',
-            Password: '',
-            Validity: '',
-            Phone: '',
-          });
+          if (response.status === 201) {
+            console.log('Hotel Manager Added Successfully', response.data);
+            setEmployeeData((prev: any) => [response.data, ...prev]);
+            hide();
+            setFormData({
+              Username: '',
+              Email: '',
+              Password: '',
+              Validity: '',
+              Phone: '',
+            });
+          } else {
+            console.log('Hotel Manager Not Added');
+          }
         } else {
-          console.log('Employee Not Added');
+          const response = await axiosInstance.post(
+            '/admin/addEmployee',
+            data,
+            {
+              withCredentials: true,
+            }
+          );
+          console.log(response);
+
+          if (response.status === 201) {
+            console.log('Employee Added Successfully', response.data);
+            setEmployeeData((prev: any) => [response.data, ...prev]);
+            hide();
+            setFormData({
+              Username: '',
+              Email: '',
+              Password: '',
+              Validity: '',
+              Phone: '',
+            });
+          } else {
+            console.log('Employee Not Added');
+          }
         }
       }
 
       // Call the handleAction function to handle the action (adding/editing)
-      console.log(handleAction(data));
+      // console.log(handleAction(data));
     } catch (error) {
       console.error('Error:', error);
     }

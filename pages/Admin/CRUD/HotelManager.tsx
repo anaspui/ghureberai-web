@@ -9,7 +9,7 @@ import CreateEmployeeModal from '../Components/Modal/CreateEmployeeModal';
 const colNames = ['Username', 'Name', 'Position', 'Phone', 'Status', ''];
 const limit = 5;
 
-function Employee() {
+function HotelManager() {
   const [employeeData, setEmployeeData] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +23,7 @@ function Employee() {
         try {
           const response = await axiosInstance({
             method: 'get',
-            url: '/admin/viewemployees',
+            url: '/admin/showallhotelmanager',
             withCredentials: true,
           });
           setEmployeeData(response.data);
@@ -88,18 +88,16 @@ function Employee() {
           <div className='items-start justify-between md:flex'>
             <div className='max-w-lg'>
               <h3 className='text-xl font-bold text-white sm:text-2xl'>
-                Employee
+                Hotel Manager
               </h3>
-              <p className='mt-2 text-white'>
-                Find all the employee from here.
-              </p>
+              <p className='mt-2 text-white'>List of all Hotel Managers</p>
             </div>
             <div className='mt-3 md:mt-0'>
               <button
                 onClick={() => setShowModal(true)}
                 className='inline-block rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-700 md:text-sm'
               >
-                Add Employee
+                Add Manager
               </button>
             </div>
           </div>
@@ -127,7 +125,7 @@ function Employee() {
                 onClick={() =>
                   currentPage > 1 && setCurrentPage((prev) => prev - 1)
                 }
-                className='rounded-lg border bg-gray-900 px-4 py-2 duration-150 hover:bg-gray-600'
+                className='rounded-lg border bg-gray-900 px-4 py-2 text-white duration-150 hover:bg-gray-600'
               >
                 Previous
               </button>
@@ -139,7 +137,7 @@ function Employee() {
                   currentPage < Math.round(employeeData?.length / limit) &&
                   setCurrentPage((prev) => prev + 1)
                 }
-                className='rounded-lg border bg-gray-900 px-4 py-2 duration-150 hover:bg-gray-600'
+                className='rounded-lg border bg-gray-900 px-4 py-2 text-white duration-150 hover:bg-gray-600'
               >
                 Next
               </button>
@@ -156,9 +154,9 @@ function Employee() {
         title={
           selectedEmployee
             ? selectedEmployee.Role === 'employee'
-              ? `Delete Employee: ${selectedEmployee.Username}`
+              ? `Delete Employee ${selectedEmployee.Username}`
               : selectedEmployee.Role === 'hotelManager'
-              ? `Delete Hotel Manager: ${selectedEmployee.Username}`
+              ? `Delete manager ( ${selectedEmployee.Username} )`
               : 'Delete Employee'
             : 'Delete Employee'
         }
@@ -194,7 +192,7 @@ function Employee() {
   );
 }
 
-export default Employee;
+export default HotelManager;
 
 const EmployeeRow = ({
   employee,
@@ -205,7 +203,7 @@ const EmployeeRow = ({
   return (
     <>
       <tr key={employee.UserId} className=''>
-        <td className='flex items-center gap-x-3 whitespace-nowrap px-6 py-3 '>
+        <td className='flex items-center gap-x-3 whitespace-nowrap px-6 py-3'>
           <img
             src={
               employee.Picture ||
@@ -217,7 +215,7 @@ const EmployeeRow = ({
             <span className='block text-sm font-medium text-white'>
               {employee.Username}
             </span>
-            <span className='block text-xs text-gray-200'>
+            <span className='block text-xs text-gray-300'>
               {employee.Email}
             </span>
           </div>
@@ -226,7 +224,7 @@ const EmployeeRow = ({
           {(employee.FirstName || '') + ' ' + (employee.LastName || '')}
         </td>
         <td className='whitespace-nowrap px-6 py-4 capitalize'>
-          Hotel Manager
+          {employee.Role}
         </td>
         <td className='whitespace-nowrap px-6 py-4'>{employee.Phone}</td>
         <td className='whitespace-nowrap px-6 py-4 capitalize'>
