@@ -17,10 +17,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState<any>('false');
+  const [userRole, setUserRole] = useState<any>('');
 
   useEffect(() => {
     setUserLoggedIn(localStorage.getItem('user'));
-  }, [token]);
+  }, []);
 
   useEffect(() => {
     async function fetchUserData() {
@@ -38,10 +39,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           if ((await response).status === 200) {
             setUser((await response).data);
             setLoading(false);
+            if ((await response).data.Role === 'admin') {
+              setUserRole('admin');
+            } else {
+              setUserRole((await response).data.Role);
+            }
           } else {
             setError('Unauthorized');
             setLoading(false);
           }
+          console.log('setUserRole', userRole);
         } catch (error) {
           setError('An error occurred');
           setLoading(false);
@@ -49,13 +56,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       }
     }
     fetchUserData();
-  }, [token, loading, userLoggedIn]);
+  }, [userLoggedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     Cookies.remove('token');
     setToken('');
     setUser(null);
+    window.location.href = '/';
   };
   if (isInsideAdminRoute || isInside404Route || isInsideUserRoute) {
     return children;
@@ -70,6 +78,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           error={error}
           handleLogout={handleLogout}
           userLoggedIn={userLoggedIn}
+          userRole={userRole}
         />
         {children}
       </>
