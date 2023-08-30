@@ -1,18 +1,64 @@
+// {
+//   "extends": [
+//     "next/core-web-vitals",
+//     "plugin:@typescript-eslint/recommended",
+//     "prettier"
+//   ],
+//   "plugins": ["@typescript-eslint", "no-null"],
+//   "rules": {
+//     // "import/order": "off",
+//     "react/no-unescaped-entities": "off",
+//     "@next/next/no-img-element": "off",
+//     "@typescript-eslint/no-unused-vars": "error",
+//     "@typescript-eslint/no-explicit-any": "off",
+//     "import/order": [
+//       "warn",
+//       {
+//         "groups": [
+//           "builtin",
+//           "external",
+//           "internal",
+//           ["parent", "sibling"],
+//           "object",
+//           "type",
+//           "index"
+//         ],
+//         "pathGroups": [
+//           {
+//             "pattern": "react",
+//             "group": "external",
+//             "position": "before"
+//           }
+//         ],
+//         "react/no-unescaped-entities": ["error", { "forbid": [">", "]", "}"] }],
+//         "pathGroupsExcludedImportTypes": ["react", "next"],
+//         "newlines-between": "always",
+//         "alphabetize": {
+//           "order": "asc",
+//           "caseInsensitive": true
+//         }
+//       }
+//     ],
+//     "sort-imports": [
+//       "error",
+//       {
+//         "ignoreCase": true,
+//         "ignoreDeclarationSort": true,
+//         "ignoreMemberSort": false,
+//         "allowSeparatedGroups": true
+//       }
+//     ],
+//     "react/react-in-jsx-scope": "off",
+//     "@typescript-eslint/consistent-type-imports": "error",
+//     "no-null/no-null": 2,
+//     "curly": ["error", "multi-line", "consistent"],
+//     "nonblock-statement-body-position": ["error", "beside"]
+//   }
+// }
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "plugins": ["@typescript-eslint", "no-null"],
   "rules": {
-    // "import/order": "off",
-    "react/no-unescaped-entities": "off",
-    "@next/next/no-img-element": "off",
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "off",
     "import/order": [
-      "warn",
+      "error",
       {
         "groups": [
           "builtin",
@@ -30,28 +76,21 @@
             "position": "before"
           }
         ],
-        "react/no-unescaped-entities": ["error", { "forbid": [">", "]", "}"] }],
         "pathGroupsExcludedImportTypes": ["react", "next"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
-        }
+        },
+        "distinctGroup": true,
+        "warnOnUnassignedImports": false
       }
     ],
-    "sort-imports": [
+    "react/no-unescaped-entities": [
       "error",
       {
-        "ignoreCase": true,
-        "ignoreDeclarationSort": true,
-        "ignoreMemberSort": false,
-        "allowSeparatedGroups": true
+        "forbid": [">", "]", "}"]
       }
-    ],
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/consistent-type-imports": "error",
-    "no-null/no-null": 2,
-    "curly": ["error", "multi-line", "consistent"],
-    "nonblock-statement-body-position": ["error", "beside"]
+    ]
   }
 }
