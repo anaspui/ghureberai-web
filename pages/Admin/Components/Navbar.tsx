@@ -20,7 +20,8 @@ const NavigationBar = () => {
     Username: string;
     Role: string;
   }
-  const userData: UserData | null = useFetchUserData();
+  const userData: UserData | null = useFetchUserData() as UserData | null;
+
   return (
     <nav className='fixed z-30 w-full border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800'>
       <div className='px-3 py-3 lg:px-5 lg:pl-3'>
