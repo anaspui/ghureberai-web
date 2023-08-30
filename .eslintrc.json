@@ -6,7 +6,6 @@
   ],
   "plugins": ["@typescript-eslint", "no-null"],
   "rules": {
-    // "import/order": "off",
     "react/no-unescaped-entities": "off",
     "@next/next/no-img-element": "off",
     "@typescript-eslint/no-unused-vars": "error",
@@ -30,13 +29,14 @@
             "position": "before"
           }
         ],
-        "react/no-unescaped-entities": ["error", { "forbid": [">", "]", "}"] }],
         "pathGroupsExcludedImportTypes": ["react", "next"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
-        }
+        },
+        "distinctGroups": true,
+        "warnOnUnassignedImports": false
       }
     ],
     "sort-imports": [
