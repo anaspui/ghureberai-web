@@ -5,6 +5,9 @@ import { MdOutlineHotelClass } from 'react-icons/md';
 import { HiOutlineBars3CenterLeft } from 'react-icons/hi2';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { GlobalContext } from '@/context/GlobalContext';
+import Link from 'next/link';
+import { FiLogOut } from 'react-icons/fi';
+import Cookies from 'js-cookie';
 const NavigationBar = () => {
   const store = useContext(GlobalContext);
   const { isOpen, setIsOpen } = store as any;
@@ -237,13 +240,11 @@ const NavigationBar = () => {
                         </a>
                       </li>
                       <li>
-                        <a
-                          href='#'
-                          className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white'
-                          role='menuitem'
-                        >
-                          Sign out
-                        </a>
+                        <Link onClick={handleLogout} href='/' passHref>
+                          <div className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white'>
+                            Sign out
+                          </div>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -255,6 +256,11 @@ const NavigationBar = () => {
       </div>
     </nav>
   );
+};
+const handleLogout = () => {
+  localStorage.removeItem('user');
+  Cookies.remove('token');
+  window.location.href = '../../PTR';
 };
 
 export default NavigationBar;

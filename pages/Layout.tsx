@@ -10,6 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const isInsideAdminRoute = router.asPath.startsWith('/Admin');
   const isInside404Route = router.asPath.startsWith('/404');
   const isInsideUserRoute = router.asPath.startsWith('/User');
+  const isInsidePTRRoute = router.asPath.startsWith('/PTR');
 
   const [token, setToken] = useState<any>('');
   const storedToken = Cookies.get('token');
@@ -63,7 +64,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     setUser(null);
     window.location.href = '/';
   };
-  if (isInsideAdminRoute || isInside404Route || isInsideUserRoute) {
+  if (
+    isInsideAdminRoute ||
+    isInside404Route ||
+    isInsideUserRoute ||
+    isInsidePTRRoute
+  ) {
     return children;
   } else {
     return (

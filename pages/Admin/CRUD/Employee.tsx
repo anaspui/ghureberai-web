@@ -8,7 +8,7 @@ import { FaTimes } from 'react-icons/fa';
 import CreateEmployeeModal from '../Components/Modal/CreateEmployeeModal';
 import { AiFillDelete } from 'react-icons/ai';
 const colNames = ['Username', 'Name', 'Position', 'Phone', 'Status', ''];
-const limit = 4;
+const limit = 2;
 interface Employee {
   UserId: string;
   Username: string;

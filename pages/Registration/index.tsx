@@ -21,28 +21,87 @@ const Registration = () => {
   const [Email, setEmail] = useState('');
   const [Phone, setPhone] = useState('');
   const [Error, setError] = useState('');
+  const [Success, setSuccess] = useState('');
+  const [usernameErr, setUsernameErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+  const [emailErr, setEmailErr] = useState('');
+  const [phoneErr, setPhoneErr] = useState('');
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
 
-    try {
-      const response = await axiosInstance.post('/registration', {
-        Username: Username,
-        Password: Password,
-        Email: Email,
-        Phone: Phone,
-      });
-      if (response.status === 201) {
-        const data = response.data;
-        Cookies.set('token', data.AccessToken);
-        router.push('/');
-        setError('Registration Succesfull');
+    setUsernameErr('');
+    setPasswordErr('');
+    setEmailErr('');
+    setPhoneErr('');
+    setError('');
+
+    let isValid = true;
+    if (!Username && !Password && !Email && !Phone) {
+      setError('All fields are required');
+      let isValid = false;
+      return;
+    }
+    if (!Username) {
+      setUsernameErr('*Username is required');
+      isValid = false;
+    }
+    if (!Password) {
+      setPasswordErr('*Password is required');
+      isValid = false;
+    }
+    if (!Email) {
+      setEmailErr('*Email is required');
+      isValid = false;
+    }
+    if (Username.length < 4) {
+      setUsernameErr('Username should be at least 5 characters');
+      isValid = false;
+    }
+    if (Password.length < 4) {
+      setPasswordErr('Password should be at least 5 characters');
+      isValid = false;
+    }
+    if (!isValidEmail(Email)) {
+      setEmailErr('Please enter a valid email address');
+      isValid = false;
+    }
+    if (!Phone) {
+      setPhoneErr('*Phone is required');
+      isValid = false;
+    }
+    if (!isValidBangladeshiPhone(Phone)) {
+      setPhoneErr('Please enter a valid phone number');
+      isValid = false;
+    }
+    if (isValid) {
+      try {
+        const response = await axiosInstance.post('/registration', {
+          Username: Username,
+          Password: Password,
+          Email: Email,
+          Phone: Phone,
+        });
+        if (response.status === 201) {
+          const data = response.data;
+          Cookies.set('token', data.AccessToken);
+          router.push('/Login');
+          setError('Registration Succesfull');
+        }
+      } catch (error: any) {
+        setError(error.response.data.message);
       }
-    } catch (error: any) {
-      setError(error.response.data.message);
     }
   };
-
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  const isValidBangladeshiPhone = (phone: string) => {
+    // The regular expression for Bangladeshi phone numbers
+    const phoneRegex = /^01[3-9]\d{8}$/;
+    return phoneRegex.test(phone);
+  };
   return (
     <>
       <section className='mt-[-4rem] flex min-h-screen items-center justify-center bg-gray-50'>
@@ -79,6 +138,11 @@ const Registration = () => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
+              {usernameErr && (
+                <span className='ml-10 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                  {usernameErr}
+                </span>
+              )}
               <div className='flex w-full border-b border-[#002D74] p-2'>
                 <RiLockPasswordLine className='mr-3 text-xl' />
                 <input
@@ -90,10 +154,15 @@ const Registration = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              {passwordErr && (
+                <span className='ml-10 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                  {passwordErr}
+                </span>
+              )}
               <div className='flex w-full border-b border-[#002D74] p-2'>
                 <AiOutlineMail className='mr-3 mt-1 text-xl' />
                 <input
-                  type='email'
+                  type='text'
                   className='w-full focus:outline-none'
                   name='Email'
                   placeholder='Email'
@@ -101,6 +170,11 @@ const Registration = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
+              {emailErr && (
+                <span className='ml-10 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                  {emailErr}
+                </span>
+              )}
               <div className='flex w-full border-b border-[#002D74] p-2'>
                 <BsTelephone className='mr-3 mt-1 text-xl' />
                 <input
@@ -112,6 +186,11 @@ const Registration = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
+              {phoneErr && (
+                <span className='ml-10 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                  {phoneErr}
+                </span>
+              )}
               <span className='ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-600'>
                 {Error}
               </span>
