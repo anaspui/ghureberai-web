@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import axiosInstance from '../../utils/axiosInstance';
 import Cookies from 'js-cookie';
-
+interface UserData {
+  Role: string;
+}
 const useFetchUserData = () => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     async function fetchUserData() {
