@@ -230,7 +230,7 @@ export default function Navbar({
                 href=''
                 className='block p-2 font-semibold text-gray-500 hover:text-[#EB5148]'
               >
-                <> Welcome, {(user as any).Username}!</>
+                <> Welcome, anaspui!</>
               </a>
               <Link onClick={handleLogout} href='/' passHref>
                 <button className='hover:shadow-[0px 8px 9px -4px rgba(51, 45, 45, 0.2), 0px 4px 18px 0px rgba(51, 45, 45, 0.1)] focus:shadow-[0px 8px 9px -4px rgba(51, 45, 45, 0.2), 0px 4px 18px 0px rgba(51, 45, 45, 0.1)] dark:shadow-[0px 4px 9px -4px #030202] dark:focus:shadow-[0px 8px 9px -4px rgba(3, 2, 2, 0.3), 0px 4px 18px 0px rgba(3, 2, 2, 0.2)] dark:active:shadow-[0px 8px 9px -4px rgba(3, 2, 2, 0.3), 0px 4px 18px 0px rgba(3, 2, 2, 0.2)] inline-block rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring-0 active:bg-neutral-900 dark:bg-neutral-900 dark:hover:bg-neutral-900 dark:active:bg-neutral-900'>

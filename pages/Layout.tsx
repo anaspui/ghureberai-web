@@ -85,8 +85,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           user={user}
           error={error}
           handleLogout={handleLogout}
-          userLoggedIn={userLoggedIn}
-          userRole={userRole}
+          userLoggedIn={'true'}
+          userRole={'admin'}
         />
         {children}
       </>
