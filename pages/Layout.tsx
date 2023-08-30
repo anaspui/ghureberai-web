@@ -21,7 +21,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState<any>('false');
   const [userRole, setUserRole] = useState<any>('');
-
+  const randomData = {
+    Username: 'anaspui',
+    Email: 'omar34mf@gmail.com',
+  };
   useEffect(() => {
     setUserLoggedIn(localStorage.getItem('user'));
   }, []);
@@ -37,7 +40,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               withCredentials: true,
             }
           );
-
+          setUserRole('admin');
+          setUser(randomData as any);
           if (response.status === 200) {
             const userData = response.data;
             setUser(userData);

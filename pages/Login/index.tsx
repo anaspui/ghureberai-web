@@ -33,7 +33,11 @@ const Login = () => {
       );
       if (response.status === 200) {
         const data = response.data;
-        Cookies.set('token', data.AccessToken);
+        Cookies.set('token', data.AccessToken, {
+          sameSite: 'none',
+          secure: true,
+        });
+
         // document.cookie = `token=${data.AccessToken}; SameSite=None; Secure`;
         localStorage.setItem('user', 'true');
         // router.push('/');
