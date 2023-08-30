@@ -9,14 +9,20 @@ import CreateEmployeeModal from '../Components/Modal/CreateEmployeeModal';
 import { AiFillDelete } from 'react-icons/ai';
 const colNames = ['Username', 'Name', 'Position', 'Phone', 'Status', ''];
 const limit = 5;
-
+interface Employee {
+  UserId: string;
+  Username: string;
+  Role: string;
+}
 function HotelManager() {
   const [employeeData, setEmployeeData] = useState([]);
   const [employees, setEmployees] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [selectedEmployee, setSelectedEmployee] = useState(undefined);
+  const [selectedEmployee, setSelectedEmployee] = useState<
+    Employee | undefined
+  >(undefined);
 
   useEffect(() => {
     async function fetchEmpData() {
@@ -279,6 +285,7 @@ const EmployeeRow = ({
               employee.Picture ||
               'https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg'
             }
+            alt={`${employee.Name}'s profile picture`}
             className='h-10 w-10 rounded-full'
           />
           <div>
