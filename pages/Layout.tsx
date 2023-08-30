@@ -25,24 +25,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     async function fetchUserData() {
-      if (localStorage.user == 'true') {
-        setToken(storedToken);
+      if (localStorage.user === 'true') {
         try {
           setLoading(true);
-          // TODO: need to fix error: xhr.js:200 Refused to set unsafe header "cookie"
-          const response = axiosInstance({
-            method: 'get',
-            url: `/user/`,
+          const response = await axiosInstance.get('/user/', {
             withCredentials: true,
           });
 
-          if ((await response).status === 200) {
-            setUser((await response).data);
+          if (response.status === 200) {
+            const userData = response.data;
+            setUser(userData);
             setLoading(false);
-            if ((await response).data.Role === 'admin') {
+            if (userData.Role === 'admin') {
               setUserRole('admin');
             } else {
-              setUserRole((await response).data.Role);
+              setUserRole(userData.Role);
             }
           } else {
             setError('Unauthorized');
@@ -55,8 +52,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }
       }
     }
+
     fetchUserData();
-  }, [userLoggedIn]);
+  }, []); // Only run once when the component mounts
 
   const handleLogout = () => {
     localStorage.removeItem('user');
