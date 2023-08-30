@@ -1,5 +1,13 @@
 import React from 'react';
-import { Package } from './PackagesTable';
+
+interface Package {
+  PackageId: number;
+  Name: string;
+  ValidFrom: Date;
+  ValidTill: Date;
+  PackageType: string;
+  TransportFacility: string;
+}
 
 interface PackageRowProps {
   packageItem: Package;
@@ -9,8 +17,10 @@ const PackageRow: React.FC<PackageRowProps> = ({ packageItem }) => {
   return (
     <tr key={packageItem.PackageId}>
       <td>{packageItem.Name}</td>
-      <td>{packageItem.ValidFrom}</td>
-      <td>{packageItem.ValidTill}</td>
+      <td>{packageItem.ValidFrom.toLocaleDateString()}</td>{' '}
+      {/* Convert to a formatted string */}
+      <td>{packageItem.ValidTill.toLocaleDateString()}</td>{' '}
+      {/* Convert to a formatted string */}
       <td>{packageItem.PackageType}</td>
       <td>{packageItem.TransportFacility}</td>
       {/* Add more columns as needed */}
