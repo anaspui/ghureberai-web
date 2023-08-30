@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from '.';
-import axiosInstance from '@/pages/utils/axiosInstance';
-
+// import axiosInstance from '@/pages/utils/axiosInstance';
+import axios from 'axios';
 type TProps = {
   show: boolean;
   hide: () => void;
@@ -99,8 +99,9 @@ function CreateEmployeeModal({
     try {
       if (employee) {
         if (employee.Role == 'employee') {
-          const response = await axiosInstance.put(
-            '/admin/updateEmployee/' + employee.UserId,
+          const response = await axios.put(
+            'https://ghureberai-api-production-9952.up.railway.app/admin/updateEmployee/' +
+              employee.UserId,
             data,
             {
               withCredentials: true,
@@ -129,8 +130,9 @@ function CreateEmployeeModal({
           }
         }
         if (employee.Role == 'hotelManager') {
-          const response = await axiosInstance.put(
-            '/admin/updateHotelManager/' + employee.UserId,
+          const response = await axios.put(
+            'https://ghureberai-api-production-9952.up.railway.app/admin/updateHotelManager/' +
+              employee.UserId,
             data,
             {
               withCredentials: true,
@@ -162,8 +164,8 @@ function CreateEmployeeModal({
       if (!employee) {
         // console.log('New Form Data, POST DETECTED');
         if (data.Email.includes('@hotel.ghureberai.com')) {
-          const response = await axiosInstance.post(
-            '/admin/addHotelManager',
+          const response = await axios.post(
+            'https://ghureberai-api-production-9952.up.railway.app/admin/addHotelManager',
             data,
             {
               withCredentials: true,
@@ -186,8 +188,8 @@ function CreateEmployeeModal({
             console.log('Hotel Manager Not Added');
           }
         } else {
-          const response = await axiosInstance.post(
-            '/admin/addEmployee',
+          const response = await axios.post(
+            'https://ghureberai-api-production-9952.up.railway.app/admin/addEmployee',
             data,
             {
               withCredentials: true,

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@/pages/Admin/Components/Layout';
-import axiosInstance from '@/pages/utils/axiosInstance';
+// import axiosInstance from '@/pages/utils/axiosInstance';
 import PackagesTable from '../Components/PackagesTable';
 import { Package } from '../Components/PackagesTable';
-
+import axios from 'axios';
 const Packages: React.FC = () => {
   const [packages, setPackages] = useState<Package[]>([]);
 
   useEffect(() => {
     async function fetchPackageData() {
       try {
-        const response = await axiosInstance({
+        const response = await axios({
           method: 'get',
-          url: '/package', // Update with your API endpoint
+          url: 'https://ghureberai-api-production-9952.up.railway.app/package', // Update with your API endpoint
           withCredentials: true,
         });
         setPackages(response.data);

@@ -3,9 +3,10 @@ import Navbar from './Navbar';
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 
-import axiosInstance from './utils/axiosInstance';
+// import axiosInstance from './utils/axiosInstance';
 
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -30,9 +31,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       if (localStorage.user === 'true') {
         try {
           setLoading(true);
-          const response = await axiosInstance.get('/user/', {
-            withCredentials: true,
-          });
+          const response = await axios.get(
+            'https://ghureberai-api-production-9952.up.railway.app/user/',
+            {
+              withCredentials: true,
+            }
+          );
 
           if (response.status === 200) {
             const userData = response.data;

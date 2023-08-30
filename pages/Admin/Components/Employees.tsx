@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
-import axiosInstance from '../../utils/axiosInstance';
+// import axiosInstance from '../../utils/axiosInstance';
+import axios from 'axios';
 
 const itemsPerPage = 5;
 
@@ -10,7 +11,9 @@ const Employees = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axiosInstance.get('/admin/allusers');
+      const response = await axios.get(
+        'https://ghureberai-api-production-9952.up.railway.app/admin/allusers'
+      );
       setEmployess(response.data);
     } catch (error) {
       console.error('Error fetching employess:', error);
@@ -31,7 +34,9 @@ const Employees = () => {
 
   const handleDeleteUser = async (UserId: any) => {
     try {
-      await axiosInstance.delete(`/admin/user/${UserId}`);
+      await axios.delete(
+        `https://ghureberai-api-production-9952.up.railway.app/admin/user/${UserId}`
+      );
       fetchEmployees();
     } catch (error) {
       console.error('Error deleting employee:', error);

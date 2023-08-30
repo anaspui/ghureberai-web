@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import axiosInstance from '../../utils/axiosInstance';
+// import axiosInstance from '../../utils/axiosInstance';
 import Cookies from 'js-cookie';
+import axios from 'axios';
 interface UserData {
   Role: string;
 }
@@ -11,9 +12,9 @@ const useFetchUserData = () => {
     async function fetchUserData() {
       if (localStorage.user === 'true') {
         try {
-          const response = await axiosInstance({
+          const response = await axios({
             method: 'get',
-            url: `/user/`,
+            url: `https://ghureberai-api-production-9952.up.railway.app/user/`,
             withCredentials: true,
           });
           if (response.status === 200) {

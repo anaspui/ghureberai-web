@@ -5,7 +5,8 @@ import { BiLogoFacebookCircle } from 'react-icons/bi';
 import { FcGoogle } from 'react-icons/fc';
 import { MdOutlineHotelClass } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
-import axiosInstance from '../utils/axiosInstance';
+// import axiosInstance from '../utils/axiosInstance';
+import axios from 'axios';
 import Navbar from '../Navbar';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
@@ -23,10 +24,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axiosInstance.post('/auth/login', {
-        Username: Username,
-        Password: Password,
-      });
+      const response = await axios.post(
+        'https://ghureberai-api-production-9952.up.railway.app/auth/login',
+        {
+          Username: Username,
+          Password: Password,
+        }
+      );
       if (response.status === 200) {
         const data = response.data;
         Cookies.set('token', data.AccessToken);

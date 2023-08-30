@@ -12,7 +12,8 @@ import { BsTelephone } from 'react-icons/bs';
 import Link from 'next/link';
 import Navbar from '../Navbar';
 import { useRouter } from 'next/router';
-import axiosInstance from '../utils/axiosInstance';
+// import axiosInstance from '../utils/axiosInstance';
+import axios from 'axios';
 import Cookies from 'js-cookie';
 const Registration = () => {
   const router = useRouter();
@@ -26,12 +27,15 @@ const Registration = () => {
     e.preventDefault();
 
     try {
-      const response = await axiosInstance.post('/registration', {
-        Username: Username,
-        Password: Password,
-        Email: Email,
-        Phone: Phone,
-      });
+      const response = await axios.post(
+        'https://ghureberai-api-production-9952.up.railway.app/registration',
+        {
+          Username: Username,
+          Password: Password,
+          Email: Email,
+          Phone: Phone,
+        }
+      );
       if (response.status === 201) {
         const data = response.data;
         Cookies.set('token', data.AccessToken);

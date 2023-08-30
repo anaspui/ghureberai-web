@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@/pages/Admin/Components/Layout';
-import axiosInstance from '@/pages/utils/axiosInstance';
+// import axiosInstance from '@/pages/utils/axiosInstance';
 import TableHead from '../Components/TableHead';
 import Modal from '../Components/Modal';
 import ConfirmationModal from '../Components/Modal/ConfirmationModal';
 import { FaTimes } from 'react-icons/fa';
 import CreateEmployeeModal from '../Components/Modal/CreateEmployeeModal';
 import { AiFillDelete } from 'react-icons/ai';
+import axios from 'axios';
 const colNames = ['Username', 'Name', 'Position', 'Phone', 'Status', ''];
 const limit = 5;
 interface Employee {
@@ -28,9 +29,9 @@ function HotelManager() {
     async function fetchEmpData() {
       if (localStorage.user === 'true') {
         try {
-          const response = await axiosInstance({
+          const response = await axios({
             method: 'get',
-            url: '/admin/showallhotelmanager',
+            url: 'https://ghureberai-api-production-9952.up.railway.app/admin/showallhotelmanager',
             withCredentials: true,
           });
           setEmployeeData(response.data);
@@ -66,8 +67,9 @@ function HotelManager() {
   const handleDeleteEmployee = async () => {
     if (selectedEmployee) {
       try {
-        const response = await axiosInstance.post(
-          '/admin/deleteEmployee/' + selectedEmployee.UserId,
+        const response = await axios.post(
+          'https://ghureberai-api-production-9952.up.railway.app/admin/deleteEmployee/' +
+            selectedEmployee.UserId,
           null,
           {
             withCredentials: true,

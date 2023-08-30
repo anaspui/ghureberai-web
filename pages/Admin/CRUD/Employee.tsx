@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@/pages/Admin/Components/Layout';
-import axiosInstance from '@/pages/utils/axiosInstance';
+import axios from 'axios';
 import TableHead from '../Components/TableHead';
 import Modal from '../Components/Modal';
 import ConfirmationModal from '../Components/Modal/ConfirmationModal';
@@ -28,9 +28,9 @@ function Employee() {
     async function fetchEmpData() {
       if (localStorage.user === 'true') {
         try {
-          const response = await axiosInstance({
+          const response = await axios({
             method: 'get',
-            url: '/admin/viewemployees',
+            url: 'https://ghureberai-api-production-9952.up.railway.app/admin/viewemployees',
             withCredentials: true,
           });
           setEmployeeData(response.data);
@@ -66,8 +66,9 @@ function Employee() {
   const handleDeleteEmployee = async () => {
     if (selectedEmployee) {
       try {
-        const response = await axiosInstance.post(
-          '/admin/deleteEmployee/' + selectedEmployee.UserId,
+        const response = await axios.post(
+          'https://ghureberai-api-production-9952.up.railway.app/admin/deleteEmployee/' +
+            selectedEmployee.UserId,
           null,
           {
             withCredentials: true,
