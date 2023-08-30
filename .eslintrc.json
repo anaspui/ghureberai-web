@@ -14,7 +14,8 @@
       "warn",
       {
         "groups": [
-          ["builtin", "external"],
+          "builtin",
+          "external",
           "internal",
           ["parent", "sibling"],
           "object",
@@ -33,7 +34,9 @@
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
-        }
+        },
+        "distinctGroups": true,
+        "warnOnUnassignedImports": false
       }
     ],
     "sort-imports": [
