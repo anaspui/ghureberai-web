@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const isInside404Route = router.asPath.startsWith('/404');
   const isInsideUserRoute = router.asPath.startsWith('/User');
   const isInsidePTRRoute = router.asPath.startsWith('/PTR');
-
+  const isInsideLoginRoute = router.asPath.startsWith('/Login');
   const [token, setToken] = useState<any>('');
   const storedToken = Cookies.get('token');
   const [user, setUser] = useState(null);
@@ -55,11 +55,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     }
 
     fetchUserData();
-  }, []); // Only run once when the component mounts
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     Cookies.remove('token');
+    sessionStorage.removeItem('token');
     setToken('');
     setUser(null);
     window.location.href = '/';
@@ -68,7 +69,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     isInsideAdminRoute ||
     isInside404Route ||
     isInsideUserRoute ||
-    isInsidePTRRoute
+    isInsidePTRRoute ||
+    isInsideLoginRoute
   ) {
     return children;
   } else {

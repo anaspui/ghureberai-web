@@ -206,10 +206,10 @@ export default function Navbar({
         <div className='absolute left-0 top-0 h-full w-3/4 overflow-y-auto bg-white lg:hidden'>
           {/* Close button */}
           <button
-            className='absolute right-0 top-0 px-5 py-5 text-gray-500 '
+            className='absolute right-0 top-0 hidden px-5 py-5 text-gray-500 '
             onClick={closeSidebar}
           >
-            <FiMenu />
+            a
           </button>
 
           {/* Navigation items */}
@@ -241,7 +241,7 @@ export default function Navbar({
           )}
 
           {/* Login button */}
-          {!userLoggedIn && (
+          {(!token || !userLoggedIn) && (
             <div className='border-t p-5'>
               <Link href='/Login' passHref>
                 <button className='flex items-center gap-2 rounded-xl border-2 bg-[#EB5148] px-4 py-2 hover:border-black hover:bg-white hover:text-[#EB5148]'>
@@ -299,7 +299,7 @@ function ResponsiveNavItem({ href, label }: any) {
   return (
     <li className='px-6 py-2'>
       <Link href={href} legacyBehavior>
-        <a className='text-gray-600 hover:text-black'>{label}</a>
+        <a className='text-gray-600 hover:text-[#EB5148] '>{label}</a>
       </Link>
     </li>
   );

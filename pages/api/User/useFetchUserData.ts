@@ -28,7 +28,7 @@ const useFetchUserData = () => {
     }
 
     fetchUserData();
-  }, []); // No dependencies needed here since it's a one-time fetch
+  }, []);
 
   return userData;
 };

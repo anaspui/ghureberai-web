@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@/pages/Admin/Components/Layout';
 import axiosInstance from '@/pages/utils/axiosInstance';
 import PackagesTable from '../Components/PackagesTable';
-import { Package } from '../Components/PackagesTable';
 
 const Packages: React.FC = () => {
-  const [packages, setPackages] = useState<Package[]>([]);
+  const [packages, setPackages] = useState([]);
 
   useEffect(() => {
     async function fetchPackageData() {
       try {
         const response = await axiosInstance({
           method: 'get',
-          url: '/package', // Update with your API endpoint
+          url: '/package',
           withCredentials: true,
         });
         setPackages(response.data);
@@ -90,8 +89,7 @@ const Packages: React.FC = () => {
         </ol>
       </div>
       <div>
-        <h1>Packages</h1>
-        <PackagesTable packages={packages} />
+        <PackagesTable />
       </div>
     </Layout>
   );

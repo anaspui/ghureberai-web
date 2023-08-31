@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRef, useState } from 'react';
+import Footer from '../Footer';
 
 const FAQ = (props: any) => {
   const answerElRef = useRef();
@@ -92,21 +93,24 @@ export default () => {
   ];
 
   return (
-    <section className='mx-auto mt-12 max-w-screen-xl px-4 leading-relaxed md:px-8'>
-      <div className='space-y-3 text-center'>
-        <h1 className='text-3xl font-semibold text-gray-800'>
-          Frequently Asked Questions
-        </h1>
-        <p className='mx-auto max-w-lg text-lg text-gray-600'>
-          Answered all frequently asked questions, Still confused? feel free to
-          contact us.
-        </p>
-      </div>
-      <div className='mx-auto mt-14 max-w-2xl'>
-        {faqsList.map((item, idx) => (
-          <FAQ idx={idx} faqsList={item} />
-        ))}
-      </div>
-    </section>
+    <>
+      <section className='mx-auto mt-12 max-w-screen-xl px-4 pb-36 leading-relaxed md:px-8'>
+        <div className='space-y-3 text-center'>
+          <h1 className='text-3xl font-semibold text-gray-800'>
+            Frequently Asked Questions
+          </h1>
+          <p className='mx-auto max-w-lg text-lg text-gray-600'>
+            Answered all frequently asked questions, Still confused? feel free
+            to contact us.
+          </p>
+        </div>
+        <div className='mx-auto mt-14 max-w-2xl'>
+          {faqsList.map((item, idx) => (
+            <FAQ idx={idx} faqsList={item} />
+          ))}
+        </div>
+      </section>
+      <Footer />
+    </>
   );
 };

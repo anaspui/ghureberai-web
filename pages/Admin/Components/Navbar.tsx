@@ -8,7 +8,9 @@ import { GlobalContext } from '@/context/GlobalContext';
 import Link from 'next/link';
 import { FiLogOut } from 'react-icons/fi';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
 const NavigationBar = () => {
+  const router = useRouter();
   const store = useContext(GlobalContext);
   const { isOpen, setIsOpen } = store as any;
   const { ref, isComponentVisible, setIsComponentVisible } =
@@ -24,7 +26,12 @@ const NavigationBar = () => {
     Role: string;
   }
   const userData: UserData | null = useFetchUserData() as UserData | null;
-
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    Cookies.remove('token');
+    sessionStorage.removeItem('token');
+    window.location.href = '../../PTR';
+  };
   return (
     <nav className='fixed z-30 w-full border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800'>
       <div className='px-3 py-3 lg:px-5 lg:pl-3'>
@@ -256,11 +263,6 @@ const NavigationBar = () => {
       </div>
     </nav>
   );
-};
-const handleLogout = () => {
-  localStorage.removeItem('user');
-  Cookies.remove('token');
-  window.location.href = '../../PTR';
 };
 
 export default NavigationBar;

@@ -29,29 +29,141 @@ const Login = () => {
       });
       if (response.status === 200) {
         const data = response.data;
-        Cookies.set('token', data.AccessToken);
-        // document.cookie = `token=${data.AccessToken}; SameSite=None; Secure`;
+        Cookies.set('token', data.AccessToken, { expires: 7 });
         localStorage.setItem('user', 'true');
-        // router.push('/');
+        sessionStorage.setItem('token', data.AccessToken);
         window.location.href = '/';
         setError('');
       }
     } catch (error: any) {
       console.log(error);
-      setError(error.response.data.message);
     }
   };
 
   return (
     <>
-      <section className='mt-[-4rem] flex min-h-screen items-center justify-center bg-gray-50'>
+      <section className='flex min-h-screen items-center justify-center bg-gray-50 pt-2'>
         <div className='flex max-w-5xl items-center rounded-2xl bg-gray-100 p-5 shadow-xl'>
           <div className='px-8 md:w-1/2 md:px-16'>
             <div className='mb-8 flex'>
-              <MdOutlineHotelClass className='text-3xl text-[#EB5148]' />
-              <h2 className='ml-3 text-2xl font-bold'>
-                <Link href='../'>Ghureberai</Link>
-              </h2>
+              <div className='flex items-center'>
+                <a href='/' className='flex text-white hover:text-orange-500'>
+                  <svg
+                    width='60'
+                    height='35'
+                    viewBox='0 0 76 47'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <g clip-path='url(#clip0_2_577)'>
+                      <path
+                        d='M55.223 28.1228C55.223 32.7172 53.4109 37.1234 50.1853 40.3722C46.9598 43.6209 42.585 45.4461 38.0234 45.4461C33.4618 45.4461 29.087 43.6209 25.8615 40.3722C22.636 37.1234 20.8239 32.7172 20.8239 28.1228'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-miterlimit='10'
+                        stroke-linecap='round'
+                      />
+                      <path
+                        d='M59.8708 28.1218L40.1473 8.67923C39.5816 8.12149 38.8214 7.80914 38.0298 7.80914C37.2382 7.80914 36.478 8.12149 35.9123 8.67923L16.1918 28.1218'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-miterlimit='10'
+                        stroke-linecap='round'
+                      />
+                      <path
+                        d='M68.2416 44.9145V2.63986'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M62.8154 6.55589L68.2406 2.21716L74.0098 6.55589'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M62.8154 12.623L68.2406 8.28427L74.0098 12.623'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M62.8154 18.5584L68.2406 14.2167L74.0098 18.5584'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M62.8124 24.3562L68.2377 20.0175L74.0069 24.3562'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M38.0313 44.9669C42.4736 44.9669 46.0748 40.8603 46.0748 35.7945C46.0748 30.7288 42.4736 26.6221 38.0313 26.6221C33.589 26.6221 29.9878 30.7288 29.9878 35.7945C29.9878 40.8603 33.589 44.9669 38.0313 44.9669Z'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-miterlimit='10'
+                        stroke-linecap='round'
+                      />
+                      <path
+                        d='M8.0863 2.85168V45.1263'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M2.66101 6.77467L8.08625 2.42902L13.8555 6.77467'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M2.66101 12.8319L8.08625 8.49609L13.8555 12.8319'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M2.66101 18.7703L8.08625 14.4286L13.8555 18.7703'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                      <path
+                        d='M2.65717 24.5681L8.0824 20.2294L13.8516 24.5681'
+                        stroke='#EB5148'
+                        stroke-width='2.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id='clip0_2_577'>
+                        <rect
+                          width='74.7995'
+                          height='45.7056'
+                          fill='white'
+                          transform='translate(0.931335 0.979797)'
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <h2 className='ml-3 text-2xl font-bold text-[#EB5148] hover:text-orange-500'>
+                    Ghureberai
+                  </h2>
+                </a>
+              </div>
             </div>
             <h2 className='text-2xl font-bold'>Sign in</h2>
             <div className='mb-8 mt-3 text-xs'>

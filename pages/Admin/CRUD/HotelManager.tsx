@@ -51,12 +51,10 @@ function HotelManager() {
   }, [employeeData, currentPage]);
 
   function paginate(items: any, page = 1, perPage = limit) {
-    // Check if the page number is valid.
     if (page < 1) {
       page = 1;
     }
 
-    // Calculate the start and end index of the current page.
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 

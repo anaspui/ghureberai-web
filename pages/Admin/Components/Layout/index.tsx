@@ -6,12 +6,10 @@ function Index({ children }: any) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the children components signaled that they are ready
     if (isLoading) {
-      // Simulate loading delay
       const loadingTimeout = setTimeout(() => {
         setIsLoading(false);
-      }, 500); // Adjust the loading duration as needed
+      }, 500);
 
       return () => clearTimeout(loadingTimeout);
     }

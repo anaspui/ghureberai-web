@@ -160,7 +160,6 @@ function CreateEmployeeModal({
         }
       }
       if (!employee) {
-        // console.log('New Form Data, POST DETECTED');
         if (data.Email.includes('@hotel.ghureberai.com')) {
           const response = await axiosInstance.post(
             '/admin/addHotelManager',
@@ -211,9 +210,6 @@ function CreateEmployeeModal({
           }
         }
       }
-
-      // Call the handleAction function to handle the action (adding/editing)
-      // console.log(handleAction(data));
     } catch (error) {
       console.error('Error:', error);
     }

@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { AiFillTwitterCircle, AiOutlineMail } from 'react-icons/ai';
-
-import { MdOutlineHotelClass } from 'react-icons/md';
+import { AiOutlineMail } from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import axiosInstance from '@/pages/utils/axiosInstance';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import { log } from 'console';
 
 const Login = () => {
-  const router = useRouter();
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
   const [Error, setError] = useState('');
   const [UsernameError, setUsernameError] = useState('');
   const [PasswordError, setPasswordError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuth, setIsAuth] = useState('');
   const handleLogin = async (e: any) => {
     e.preventDefault();
     if (!Username && !Password) {
@@ -45,31 +44,28 @@ const Login = () => {
         Password: Password,
       });
       if (response.status === 200) {
+        setError('');
         setIsLoading(true);
         const data = response.data;
         Cookies.set('token', data.AccessToken);
+        sessionStorage.setItem('token', data.AccessToken);
         localStorage.setItem('user', 'true');
-        // router.push('/');
-        window.location.href = '../Admin/Home';
-        setError('');
       }
     } catch (error: any) {
       console.log(error);
-      setError(error.response.data.message);
     }
   };
   useEffect(() => {
-    if (isLoading) {
-      // Simulate loading timeout
+    const user = localStorage.getItem('user');
+    console.log('user:', user);
+    if (isLoading && user === 'true') {
       const timeoutId = setTimeout(() => {
+        window.location.href = '/Admin/Home';
         setIsLoading(false);
-        // Navigate to the next page
-        router.push('/Admin/Home');
-      }, 3000); // Adjust the timeout duration as needed
-
+      }, 300);
       return () => clearTimeout(timeoutId);
     }
-  }, [isLoading, router]);
+  }, [isLoading]);
 
   return (
     <>
@@ -87,7 +83,6 @@ const Login = () => {
                 <div className='px-8 md:w-1/2 md:px-16'>
                   <div className='mb-8 flex'>
                     <div className='flex items-center'>
-                      {/* <MdOutlineHotelClass className='text-3xl' /> */}
                       <svg
                         width='60'
                         height='35'
@@ -206,7 +201,10 @@ const Login = () => {
                     </div>
                   </div>
 
-                  <form onSubmit={handleLogin} className='flex flex-col gap-4'>
+                  <form
+                    onSubmit={(e) => handleLogin(e)}
+                    className='flex flex-col gap-4'
+                  >
                     <div className='flex w-full border-b border-[#002D74] p-2'>
                       <AiOutlineMail className='mb-1 mr-3 text-2xl text-[#EB5148]' />
                       <input
