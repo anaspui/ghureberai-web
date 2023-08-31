@@ -3,6 +3,14 @@ import axiosInstance from '../../utils/axiosInstance';
 import Cookies from 'js-cookie';
 interface UserData {
   Role: string;
+  Phone: string;
+  Email: string;
+  Username: string;
+  Dob: Date;
+  Address: string;
+  Gender: string;
+  FirstName: string;
+  LastName: string;
 }
 const useFetchUserData = () => {
   const [userData, setUserData] = useState<UserData | null>(null);

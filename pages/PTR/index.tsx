@@ -53,6 +53,7 @@ const Login = () => {
       }
     } catch (error: any) {
       console.log(error);
+      setError(error.response.data.message);
     }
   };
   useEffect(() => {

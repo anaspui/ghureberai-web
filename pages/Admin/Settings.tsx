@@ -1,8 +1,155 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@/pages/Admin/Components/Layout';
 import Image from 'next/image';
+import axiosInstance from '../utils/axiosInstance';
+import { error } from 'console';
+import useFetchUserData from '../api/User/useFetchUserData';
 
 function Settings() {
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [currentPasswordError, setCurrentPasswordError] = useState('');
+  const [newPasswordError, setNewPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  //For General Info
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastname] = useState('');
+  const [gender, setGender] = useState('');
+  const [dob, setDob] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const UserData = useFetchUserData();
+  const [phoneErr, setPhoneErr] = useState('');
+  // Later in your code\
+  let genValid = true;
+  let isValid = true;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!currentPassword) {
+      setCurrentPasswordError('Current password is required');
+      isValid = false;
+    } else {
+      setCurrentPasswordError('');
+    }
+
+    if (!newPassword) {
+      setNewPasswordError('New password is required');
+      isValid = false;
+    } else if (newPassword.length < 6) {
+      setNewPasswordError('Password must be at least 8 characters');
+      isValid = false;
+    } else {
+      setNewPasswordError('');
+    }
+
+    if (!confirmPassword) {
+      setConfirmPasswordError('Confirm password is required');
+      isValid = false;
+    } else if (newPassword !== confirmPassword && newPassword) {
+      setConfirmPasswordError('Passwords do not match');
+      isValid = false;
+    } else {
+      setConfirmPasswordError('');
+    }
+    if (isValid) {
+      const formData = {
+        CurrentPassword: currentPassword,
+        NewPassword: newPassword,
+        ConfirmPassword: confirmPassword,
+      };
+
+      // console.log('formdata ', formData);
+      try {
+        const response = await axiosInstance.put(
+          '/auth/update-password',
+          formData,
+          {
+            withCredentials: true,
+          }
+        );
+        if (response.status === 200) {
+          // Show success popup here
+          console.log('Password updated successfully.');
+          // You can use any method to show a popup, like using a UI library or custom modal
+          showSuccessPopup();
+        }
+        console.log('response ', response);
+      } catch (error) {
+        console.log('error ', error);
+      }
+    }
+  };
+  const submitGeneralInfo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (phone) {
+      if (!isValidBangladeshiPhone(phone)) {
+        setPhoneErr('Please enter a valid phone number');
+        genValid = false;
+      } else {
+        setPhoneErr('');
+        genValid = true;
+      }
+    }
+    if (!gender) {
+      setGender('male');
+    }
+
+    const postData = {
+      Username: username,
+      FirstName: firstName,
+      LastName: lastName,
+      Gender: gender.toLowerCase(),
+      Dob: dob,
+      Address: address,
+      Email: email,
+      Phone: phone,
+    };
+    if (genValid) {
+      try {
+        const response = await axiosInstance.post(
+          '/admin/update-profile',
+          postData,
+          {
+            withCredentials: true,
+          }
+        );
+        if (response.status === 200) {
+          showSuccessPopup();
+        }
+      } catch (error) {
+        console.log('error ', error);
+      }
+    }
+  };
+  function showSuccessPopup() {
+    const popup = document.createElement('div');
+    popup.className = 'fixed inset-0 flex items-center justify-center z-50';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute(
+      'class',
+      'stroke-2 stroke-current text-green-500 h-20 w-20 bg-gray-800 rounded-full border-2 border-gray-200  '
+    );
+    svg.setAttribute('viewBox', '0 0 24 24');
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M9 12l2 2 4-4');
+    svg.appendChild(path);
+
+    popup.appendChild(svg);
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+      document.body.removeChild(popup);
+    }, 2000);
+  }
+  const isValidBangladeshiPhone = (phone: string) => {
+    const phoneRegex = /^01[3-9]\d{8}$/;
+    return phoneRegex.test(phone);
+  };
   return (
     <Layout>
       <div className='mt-2 px-8'>
@@ -53,11 +200,13 @@ function Settings() {
           <div className='mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 2xl:col-span-2'>
             <div className='relative items-center sm:flex sm:space-x-4 xl:block xl:space-x-0 2xl:flex 2xl:space-x-4'>
               <div className='relative h-28 w-28'>
-                <Image
-                  fill
-                  className='relative mb-4 h-28 w-28 rounded-lg sm:mb-0 xl:mb-4 2xl:mb-0'
-                  src='https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green-2x.png'
-                  alt='Jese picture'
+                <img
+                  className='relative mb-4 h-28 w-28 rounded-lg border-2 border-gray-700 sm:mb-0 xl:mb-4 2xl:mb-0'
+                  src={
+                    UserData?.Picture ||
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
+                  }
+                  alt={`${UserData?.Usernameame}'s profile picture`}
                 />
               </div>
               <div>
@@ -97,7 +246,7 @@ function Settings() {
             <h3 className='mb-4 text-xl font-semibold dark:text-white'>
               Password information
             </h3>
-            <form action='#' data-protonpass-form=''>
+            <form onSubmit={handleSubmit}>
               <div className='grid grid-cols-6 gap-6'>
                 <div className='col-span-6 sm:col-span-3'>
                   <label
@@ -107,13 +256,15 @@ function Settings() {
                     Current password
                   </label>
                   <input
-                    type='text'
+                    type='password'
                     name='current-password'
                     id='current-password'
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
                     placeholder='••••••••'
-                    required
                   />
+                  <span className='text-red-600'> {currentPasswordError}</span>
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
                   <label
@@ -127,10 +278,12 @@ function Settings() {
                     data-popover-placement='bottom'
                     type='password'
                     id='password'
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
                     className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pr-[40.2667px] text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
                     placeholder='••••••••'
-                    required
                   />
+                  <span className='text-red-600'>{newPasswordError}</span>
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
                   <label
@@ -140,20 +293,22 @@ function Settings() {
                     Confirm password
                   </label>
                   <input
-                    type='text'
+                    type='password'
                     name='confirm-password'
                     id='confirm-password'
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
                     placeholder='••••••••'
-                    required
                   />
+                  <span className='text-red-600'>{confirmPasswordError}</span>
                 </div>
                 <div className='sm:col-full col-span-6'>
                   <button
                     className='dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300'
                     type='submit'
                   >
-                    Save all
+                    Save
                   </button>
                 </div>
               </div>
@@ -166,9 +321,9 @@ function Settings() {
               General information
             </h3>
             <form
-              action='#'
-              data-protonpass-form=''
-              data-protonpass-form-type='register'
+              onSubmit={(e) => {
+                submitGeneralInfo(e);
+              }}
             >
               <div className='grid grid-cols-6 gap-6'>
                 <div className='col-span-6 sm:col-span-3'>
@@ -176,15 +331,16 @@ function Settings() {
                     htmlFor='username'
                     className='mb-2 block text-sm font-medium text-gray-900 dark:text-white'
                   >
-                    First Name
+                    Username
                   </label>
                   <input
                     type='text'
-                    name='usernamee'
-                    id='username'
+                    name='Username'
+                    id='Username'
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='Bonnie'
-                    required
+                    placeholder={UserData?.Username}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -198,9 +354,10 @@ function Settings() {
                     type='text'
                     name='first-name'
                     id='first-name'
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='Bonnie'
-                    required
+                    placeholder={UserData?.FirstName}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -214,9 +371,10 @@ function Settings() {
                     type='text'
                     name='last-name'
                     id='last-name'
+                    value={lastName}
+                    onChange={(e) => setLastname(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='Green'
-                    required
+                    placeholder={UserData?.LastName}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -230,9 +388,10 @@ function Settings() {
                     type='text'
                     name='gender'
                     id='gender'
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='Male / Female / Other'
-                    required
+                    placeholder={UserData?.Gender}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -246,9 +405,10 @@ function Settings() {
                     type='date'
                     name='dob'
                     id='dob'
+                    // value={dob}
+                    onChange={(e) => setDob(e.target.value)}
+                    // value={UserData?.Dob ? UserData?.Dob.slice(0, 10) : ''}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='20/12/2000'
-                    required
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -262,9 +422,10 @@ function Settings() {
                     type='text'
                     name='address'
                     id='address'
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='e.g. California'
-                    required
+                    placeholder={UserData?.Address}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -275,12 +436,13 @@ function Settings() {
                     Email
                   </label>
                   <input
-                    type='email'
+                    type='text'
                     name='email'
                     id='email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='example@company.com'
-                    required
+                    placeholder={UserData?.Email}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -291,13 +453,15 @@ function Settings() {
                     Phone Number
                   </label>
                   <input
-                    type='number'
+                    type='text'
                     name='phone-number'
                     id='phone-number'
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     className='focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm'
-                    placeholder='e.g. +(12)3456 789'
-                    required
+                    placeholder={UserData?.Phone}
                   />
+                  <span className='text-red-600'>{phoneErr}</span>
                 </div>
                 <div className='sm:col-full col-span-6'>
                   <button

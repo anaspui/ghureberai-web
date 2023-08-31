@@ -12,7 +12,7 @@ const colNames = [
   'Rental',
 ];
 
-const limit = 3;
+const limit = 2;
 
 interface Package {
   PackageId: string;
@@ -82,6 +82,14 @@ function PackageManagement() {
       <div className='mb-4 items-start justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 md:flex 2xl:col-span-2'>
         <div className='max-w-lg'>
           <h3 className='text-xl font-bold text-white sm:text-2xl'>Packages</h3>
+          <h4 className=' text-white'>Review packages from here</h4>
+        </div>
+        <div className='max-w-lg'>
+          <a href='/Package'>
+            <button className='mb-2 mr-2 rounded-full border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700'>
+              Packages Page
+            </button>
+          </a>
         </div>
       </div>
       <div className='rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800'>
@@ -99,7 +107,30 @@ function PackageManagement() {
             </tbody>
           </table>
         </div>
-        {/* Pagination buttons */}
+        <div className='mx-auto max-w-screen-xl px-4 py-12 text-white md:px-8'>
+          <div className='flex items-center justify-between text-sm font-medium text-white'>
+            <button
+              onClick={() =>
+                currentPage > 1 && setCurrentPage((prev) => prev - 1)
+              }
+              className='rounded-lg border bg-gray-900 px-4 py-2 duration-150 hover:bg-gray-600'
+            >
+              Previous
+            </button>
+            <div>
+              Page {currentPage} of {Math.round(packageData?.length / limit)}
+            </div>
+            <button
+              onClick={() =>
+                currentPage < Math.round(packageData?.length / limit) &&
+                setCurrentPage((prev) => prev + 1)
+              }
+              className='rounded-lg border bg-gray-900 px-4 py-2 duration-150 hover:bg-gray-600'
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -145,7 +176,7 @@ const PackageRow = ({
         {pkg.PackageType}
       </td>
       <td className='whitespace-nowrap px-6 py-4 capitalize'>
-        {pkg.TransportFacility}
+        {pkg.TransportFacility === 'true' ? 'Yes' : 'No'}
       </td>
       <td className='whitespace-nowrap px-6 text-right'>
         <button

@@ -212,7 +212,7 @@ const sideNavBar = [
       },
       {
         name: 'Blog',
-        link: '#',
+        link: '/Blogs',
       },
       {
         name: 'Support',

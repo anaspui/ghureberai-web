@@ -261,7 +261,7 @@ function CreateEmployeeModal({
             placeholder='Username'
             value={formData.Username}
             onChange={(e) => handleInputChange('Username', e.target.value)}
-            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600'
+            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-white shadow-sm outline-none focus:border-indigo-600'
           />
           {validationErrors.Username && (
             <div className='text-red-500'>{validationErrors.Username}</div>
@@ -272,7 +272,7 @@ function CreateEmployeeModal({
             placeholder='Email'
             value={formData.Email}
             onChange={(e) => handleInputChange('Email', e.target.value)}
-            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600'
+            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-white shadow-sm outline-none focus:border-indigo-600'
           />
           {validationErrors.Email && (
             <div className='text-red-500'>{validationErrors.Email}</div>
@@ -285,7 +285,7 @@ function CreateEmployeeModal({
             aria-autocomplete='none'
             value={formData.Phone}
             onChange={(e) => handleInputChange('Phone', e.target.value)}
-            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600'
+            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-white shadow-sm outline-none focus:border-indigo-600'
           />
           {validationErrors.Phone && (
             <div className='text-red-500'>{validationErrors.Phone}</div>
@@ -296,7 +296,7 @@ function CreateEmployeeModal({
             placeholder='Password'
             value={formData.Password}
             onChange={(e) => handleInputChange('Password', e.target.value)}
-            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600'
+            className='mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-white shadow-sm outline-none focus:border-indigo-600'
           />
           {validationErrors.Password && (
             <div className='text-red-500'>{validationErrors.Password}</div>
