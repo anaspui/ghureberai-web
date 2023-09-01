@@ -106,7 +106,37 @@ function CreateEmployeeModal({
               withCredentials: true,
             }
           );
-          console.log(response.data);
+
+          if (response.status === 200) {
+            setEmployeeData((prev: any) =>
+              prev.map((employee: any) => {
+                if (employee.UserId === response.data.UserId) {
+                  return { ...employee, ...response.data };
+                }
+                return employee;
+              })
+            );
+            hide();
+            setFormData({
+              Username: '',
+              Email: '',
+              Password: '',
+              Validity: '',
+              Phone: '',
+            });
+          } else {
+            console.log('UPDATE: Employee Not Added');
+          }
+        }
+        if (employee.Role == 'admin') {
+          const response = await axiosInstance.put(
+            '/admin/updateAdmin/' + employee.UserId,
+            data,
+            {
+              withCredentials: true,
+            }
+          );
+
           if (response.status === 200) {
             setEmployeeData((prev: any) =>
               prev.map((employee: any) => {
@@ -183,6 +213,26 @@ function CreateEmployeeModal({
             });
           } else {
             console.log('Hotel Manager Not Added');
+          }
+        } else if (data.Email.includes('@admin.ghureberai.com')) {
+          const response = await axiosInstance.post('/admin/addAdmin', data, {
+            withCredentials: true,
+          });
+          console.log(response);
+
+          if (response.status === 201) {
+            console.log('Admin Added Successfully', response.data);
+            setEmployeeData((prev: any) => [response.data, ...prev]);
+            hide();
+            setFormData({
+              Username: '',
+              Email: '',
+              Password: '',
+              Validity: '',
+              Phone: '',
+            });
+          } else {
+            console.log('Admin Not Added');
           }
         } else {
           const response = await axiosInstance.post(

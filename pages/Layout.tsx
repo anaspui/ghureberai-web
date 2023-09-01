@@ -46,7 +46,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             setError('Unauthorized');
             setLoading(false);
           }
-          console.log('setUserRole', userRole);
+          // console.log('setUserRole', userRole);
         } catch (error) {
           setError('An error occurred');
           setLoading(false);

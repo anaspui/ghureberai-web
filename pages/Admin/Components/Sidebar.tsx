@@ -4,7 +4,7 @@ import {
   MdSpaceDashboard,
 } from 'react-icons/md';
 // import { FaUsers } from 'react-icons/fa';
-import { BiChevronDown } from 'react-icons/bi';
+import { BiChevronDown, BiSolidLogOut } from 'react-icons/bi';
 import {
   FC,
   ReactNode,
@@ -18,7 +18,12 @@ import { GlobalContext } from '@/context/GlobalContext';
 import Link from 'next/link';
 import { RiPagesFill } from 'react-icons/ri';
 import { HiCog6Tooth } from 'react-icons/hi2';
-
+const handleLogout = () => {
+  localStorage.removeItem('user');
+  Cookies.remove('token');
+  sessionStorage.removeItem('token');
+  window.location.href = '../../PTR';
+};
 const Sidebar = ({ setActiveButton, currentPage }: any) => {
   const store = useContext(GlobalContext);
   const { isOpen } = store as any;
@@ -48,6 +53,12 @@ const Sidebar = ({ setActiveButton, currentPage }: any) => {
               </ul>
             </div>
           </div>
+          {/* <Link onClick={handleLogout} href='/' passHref>
+            <BiSolidLogOut
+              size={25}
+              className='mb-4 ml-44 text-gray-300 hover:text-orange-600 hover:shadow-lg hover:shadow-gray-900'
+            />
+          </Link> */}
         </div>
       </aside>
       {!isLargeScreen && isOpen && (
@@ -185,6 +196,10 @@ const sideNavBar = [
       {
         name: 'Hotel Manager',
         link: '/Admin/CRUD/HotelManager',
+      },
+      {
+        name: 'Admin',
+        link: '/Admin/CRUD/AdminManagement',
       },
     ],
   },

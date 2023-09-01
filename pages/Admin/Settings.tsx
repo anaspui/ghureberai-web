@@ -4,7 +4,6 @@ import Image from 'next/image';
 import axiosInstance from '../utils/axiosInstance';
 import { error } from 'console';
 import useFetchUserData from '../api/User/useFetchUserData';
-
 function Settings() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -13,6 +12,7 @@ function Settings() {
   const [newPasswordError, setNewPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   //For General Info
+  const [apiUpdatePassError, setApiUpdatePassError] = useState('');
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastname] = useState('');
@@ -23,6 +23,70 @@ function Settings() {
   const [phone, setPhone] = useState('');
   const UserData = useFetchUserData();
   const [phoneErr, setPhoneErr] = useState('');
+
+  // const handlePictureUpload = async (event: any) => {
+  //   const file = event.target.files[0];
+  //   const filename = file.name;
+  //   const fileExtension = filename.split('.')[1];
+
+  //   // Check if the file is a supported file type
+  //   // if (!['jpg', 'gif', 'png'].includes(fileExtension)) {
+  //   //   alert('Only JPG, GIF, and PNG files are supported.');
+  //   //   return;
+  //   // }
+
+  //   // // Check if the file is too large
+  //   // if (file.size > 800000) {
+  //   //   alert('The file must be less than 800KB.');
+  //   //   return;
+  //   // }
+
+  //   // Create a new file object
+  //   const imageFile = new File([file], filename, {
+  //     type: file.type,
+  //   });
+
+  //   // Save the file to the public/uploads directory
+  //   const saveAs = new FileSaver(imageFile);
+  //   await saveAs.save(`public/uploads/${filename}`).then(
+  //     () => {
+  //       // The file was saved successfully.
+  //       console.log('file saved successfully');
+  //     },
+  //     (error: any) => {
+  //       // The file could not be saved.
+  //       console.log('error saving ', error);
+  //     }
+  //   );
+
+  //   // // Post the image path to the API
+  //   // await postImagePathToApi(imagePath);
+  //   console.log('imagePath ', imageFile);
+  // };
+
+  // // const saveFile = async (file: any, directory: any) => {
+  // //   const imagePath = `${directory}/${file.name}`;
+
+  // //   await new FileIO().save(file, imagePath);
+
+  // //   return imagePath;
+  // // };
+
+  // const postImagePathToApi = async (imagePath: any) => {
+  //   const response = await fetch(`/api/upload`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ imagePath }),
+  //   });
+
+  //   if (response.status === 200) {
+  //     alert('File uploaded successfully.');
+  //   } else {
+  //     alert('An error occurred while uploading the file.');
+  //   }
+  // };
   // Later in your code\
   let genValid = true;
   let isValid = true;
@@ -74,12 +138,18 @@ function Settings() {
         if (response.status === 200) {
           // Show success popup here
           console.log('Password updated successfully.');
+          setApiUpdatePassError('');
           // You can use any method to show a popup, like using a UI library or custom modal
           showSuccessPopup();
+        } else {
+          setApiUpdatePassError('Current password is incorrect');
+          console.log(apiUpdatePassError);
         }
         console.log('response ', response);
       } catch (error) {
         console.log('error ', error);
+        setApiUpdatePassError('Current password is incorrect');
+        console.log(apiUpdatePassError);
       }
     }
   };
@@ -199,16 +269,33 @@ function Settings() {
         <div className='col-span-full xl:col-auto'>
           <div className='mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 2xl:col-span-2'>
             <div className='relative items-center sm:flex sm:space-x-4 xl:block xl:space-x-0 2xl:flex 2xl:space-x-4'>
-              <div className='relative h-28 w-28'>
+              <div className='relative h-36 w-28'>
                 <img
                   className='relative mb-4 h-28 w-28 rounded-lg border-2 border-gray-700 sm:mb-0 xl:mb-4 2xl:mb-0'
                   src={
                     UserData?.Picture ||
                     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png'
                   }
-                  alt={`${UserData?.Usernameame}'s profile picture`}
+                  alt={`${UserData?.Username}'s profile picture`}
                 />
+                <div className='relative ml-4 mt-2'>
+                  <input
+                    type='file'
+                    accept='.jpg,.jpeg,.png,.gif'
+                    name='profilePicture'
+                    id='profilePicture'
+                    className='hidden'
+                  />
+
+                  <label
+                    htmlFor='profilePicture'
+                    className='dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 inline-block cursor-pointer rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300'
+                  >
+                    Choose
+                  </label>
+                </div>
               </div>
+
               <div>
                 <h3 className='mb-1 text-xl font-bold text-gray-900 dark:text-white'>
                   Profile picture
@@ -265,6 +352,7 @@ function Settings() {
                     placeholder='••••••••'
                   />
                   <span className='text-red-600'> {currentPasswordError}</span>
+                  <span className='text-red-600'>{apiUpdatePassError}</span>
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
                   <label
