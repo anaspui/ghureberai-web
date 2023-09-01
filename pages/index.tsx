@@ -4,16 +4,16 @@ import Hero from './Hero';
 import Navbar from './Navbar';
 import Newsletter from './Newsletter';
 import Partner from './Partner';
+import Stats from './Stats';
 import Testimonial from './Testimonial';
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <Partner />
+      <Stats />
       <Gallery />
       <Testimonial />
-      <Newsletter />
       <Footer />
     </>
   );

@@ -5,10 +5,9 @@ import Footer from '../Footer';
 const ContactUs = () => {
   return (
     <>
-      <Navbar />
-      <div className=' bg-white px-6 py-24 sm:py-32 lg:px-8'>
+      <div className='bg-[url("https://unsplash.com/photos/6bXvYyAYVrE")] px-6 py-24 sm:py-32 lg:px-8'>
         <div
-          className='absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]'
+          className='absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]'
           aria-hidden='true'
         >
           <div className='relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]'></div>
@@ -123,9 +122,9 @@ const ContactUs = () => {
                     aria-hidden='true'
                   >
                     <path
-                      fill-rule='evenodd'
+                      fillRule='evenodd'
                       d='M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z'
-                      clip-rule='evenodd'
+                      clipRule='evenodd'
                     />
                   </svg>
                 </div>
@@ -164,6 +163,9 @@ const ContactUs = () => {
           </div>
         </form>
       </div>
+      <div className="inset-0 bg-gray-300">
+  </div>
+  
       <Footer />
     </>
   );
