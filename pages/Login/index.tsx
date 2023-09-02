@@ -15,32 +15,78 @@ const Login = () => {
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
   const [Error, setError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [SuccessLoading, setSuccessLoading] = useState(false);
   const token = Cookies.get('token');
   // if (token) {
   //   console.log('token:', token);
   // }
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    setError('');
+    setUsernameError('');
+    setPasswordError('');
+    if (!Username && !Password) {
+      setError('Username and Password are required');
+      return;
+    } else {
+      setError('');
+    }
+    if (!Username) {
+      setUsernameError('Please enter your username');
+      return;
+    } else {
+      setUsernameError('');
+    }
+    if (!Password) {
+      setPasswordError('Please enter your password');
+      return;
+    } else {
+      setPasswordError('');
+    }
 
-    try {
-      const response = await axiosInstance.post('/auth/login', {
-        Username: Username,
-        Password: Password,
-      });
-      if (response.status === 200) {
-        const data = response.data;
-        Cookies.set('token', data.AccessToken, { expires: 7 });
-        localStorage.setItem('user', 'true');
-        sessionStorage.setItem('token', data.AccessToken);
-        window.location.href = '/';
-        setError('');
+    if (Username && Password) {
+      try {
+        const response = await axiosInstance.post('/auth/login', {
+          Username: Username,
+          Password: Password,
+        });
+        if (response.status === 200) {
+          const data = response.data;
+          Cookies.set('token', data.AccessToken, { expires: 7 });
+          localStorage.setItem('user', 'true');
+          sessionStorage.setItem('token', data.AccessToken);
+          window.location.href = '/';
+          setError('');
+          LoggingIn(data, 5000);
+        }
+      } catch (error: any) {
+        console.log(error);
+        setError(error.response.data.message);
       }
-    } catch (error: any) {
-      console.log(error);
-      setError(error.response.data.message);
     }
   };
-
+  function LoggingIn(user: any, loadingTime: any) {
+    setSuccessLoading(true);
+    if (user.role === 'admin') {
+      const isAdmin = window.confirm('Go to admin panel?');
+      if (isAdmin) {
+        window.location.href = '/Admin/Home';
+      } else {
+        window.location.href = '/';
+      }
+    } else {
+      setTimeout(function () {
+        const isAdmin = window.confirm('Go to admin panel?');
+        if (isAdmin) {
+          window.location.href = '/Admin/Home';
+        } else {
+          window.location.href = '/';
+        }
+      }, loadingTime);
+    }
+  }
   return (
     <>
       <section className='flex min-h-screen items-center justify-center bg-gray-50 pt-2'>
@@ -189,6 +235,11 @@ const Login = () => {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
+              {usernameError && (
+                <span className='ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                  {usernameError}
+                </span>
+              )}
               <div className='flex w-full border-b border-[#002D74] p-2'>
                 <RiLockPasswordLine className='mb-1 mr-3 text-2xl text-[#EB5148]' />
                 <input
@@ -200,12 +251,26 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <span className='ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-600'>
-                {Error}
-              </span>
+              {passwordError && (
+                <span className='ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                  {passwordError}
+                </span>
+              )}
+              {Error && (
+                <span className='ml-1 mt-1 flex items-center text-xs font-medium tracking-wide text-red-600'>
+                  {Error}
+                </span>
+              )}
+
               <button className='rounded-xl bg-[#EB5148] py-2 text-white duration-300 hover:scale-105'>
                 Login
               </button>
+              {SuccessLoading && (
+                <div className='flex items-center justify-center'>
+                  <div className='mr-2 inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-green-500 border-r-transparent align-[0.25em] text-green-500'></div>
+                  <div className='text-sm text-green-500'>Logging In</div>
+                </div>
+              )}
             </form>
 
             <div className='py-4 text-xs text-[#002D74]'>
