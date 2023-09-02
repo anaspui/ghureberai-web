@@ -1,7 +1,7 @@
 import useFetchUserData from '@/pages/api/User/useFetchUserData';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import useComponentVisible from '../../../hooks/useComponentVisible';
-import { MdOutlineHotelClass } from 'react-icons/md';
+import { MdNotifications, MdOutlineHotelClass } from 'react-icons/md';
 import { HiOutlineBars3CenterLeft } from 'react-icons/hi2';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { GlobalContext } from '@/context/GlobalContext';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { FiLogOut } from 'react-icons/fi';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
+import Clock from './Clock';
 const NavigationBar = () => {
   const router = useRouter();
   const store = useContext(GlobalContext);
@@ -181,8 +182,15 @@ const NavigationBar = () => {
                 Admin Panel
               </div>
             </a>
+            <div className='flex select-none items-center space-x-4'>
+              <div className='flex justify-between rounded-lg border border-gray-600 bg-gray-900 py-1.5 hover:bg-gray-700 lg:border-2 lg:border-gray-700 lg:px-32 '>
+                <Clock />
+              </div>
+            </div>
           </div>
+
           <div className='flex items-center space-x-4'>
+            <MdNotifications size={22} className='text-gray-200' />
             <div className='relative'>
               <button
                 type='button'

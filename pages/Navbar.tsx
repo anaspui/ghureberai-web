@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosLogIn } from 'react-icons/io';
 import { MdOutlineHotelClass } from 'react-icons/md';
 import Link from 'next/link';
